@@ -5,7 +5,6 @@ use_frameworks!
 
 target 'Live' do
 pod 'IHKeyboardAvoiding'
-pod 'LTWaveEmitterView'
 pod 'Socket.IO-Client-Swift'
 pod 'VideoCore/Swift', :git => 'https://github.com/maxcampolo/VideoCore.git', :branch => 'update_headers'
 pod 'glm', :git => 'https://github.com/maxcampolo/glm.git'

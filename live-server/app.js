@@ -16,10 +16,6 @@ io.on('connection', function (socket) {
     socket.join('room');
   });
 
-  // setInterval(function() {
-  //   io.to('room').emit('upvote')
-  // }, 100)
-
   socket.on('upvote', function (data) {
     console.log('upvote')
     io.to('room').emit('upvote')
