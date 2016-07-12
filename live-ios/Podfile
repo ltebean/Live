@@ -1,0 +1,12 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '9.0'
+
+use_frameworks!
+
+target 'Live' do
+pod 'IHKeyboardAvoiding'
+pod 'LTWaveEmitterView'
+pod 'Socket.IO-Client-Swift'
+pod 'VideoCore/Swift', :git => 'https://github.com/maxcampolo/VideoCore.git', :branch => 'update_headers'
+pod 'glm', :git => 'https://github.com/maxcampolo/glm.git'
+end
