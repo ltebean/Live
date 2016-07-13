@@ -69,7 +69,16 @@ For the media server, there are serveral choices:
 * Nginx RTMP module
 * crtmpserver
 
-Lots of live stream cloud already covers the media server and cdn parts. You just need to push/pull the stream from it.
+After setting up the server, you can test it using ffmpeg(install it by `brew install ffmpeg`)
+* push stream
+```
+ffmpeg -f avfoundation -framerate 30  -i "1:0" -f flv rtmp://server-url
+```
+
+* watch the stream: go to this site: https://www.hlsplayer.net/rtmp-player
+
+
+p.s. Lots of live stream cloud already covers the media server and cdn parts. You just need to push/pull the stream from it.
 
 
 #### 2. iOS RTMP libs
