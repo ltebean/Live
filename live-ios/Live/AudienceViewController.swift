@@ -38,24 +38,6 @@ class AudienceViewController: UIViewController {
             self?.joinRoom()
         }
         
-        NSNotificationCenter.defaultCenter().addObserverForName(IJKMPMoviePlayerLoadStateDidChangeNotification, object: player, queue: NSOperationQueue.mainQueue(), usingBlock: { [weak self] notification in
-            
-            guard let this = self else {
-                return
-            }
-            let state = this.player.loadState
-            switch state {
-            case IJKMPMovieLoadState.Playable:
-                this.statusLabel.text = "Playable"
-            case IJKMPMovieLoadState.PlaythroughOK:
-                this.statusLabel.text = "Playing"
-            case IJKMPMovieLoadState.Stalled:
-                this.statusLabel.text = "Buffering"
-            default:
-                this.statusLabel.text = "Playing"
-            }
-        })
-        
     }
     
     func joinRoom() {
@@ -74,12 +56,32 @@ class AudienceViewController: UIViewController {
         super.viewWillAppear(animated)
         player.play()
         socket.connect()
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(IJKMPMoviePlayerLoadStateDidChangeNotification, object: player, queue: NSOperationQueue.mainQueue(), usingBlock: { [weak self] notification in
+            
+            guard let this = self else {
+                return
+            }
+            let state = this.player.loadState
+            switch state {
+            case IJKMPMovieLoadState.Playable:
+                this.statusLabel.text = "Playable"
+            case IJKMPMovieLoadState.PlaythroughOK:
+                this.statusLabel.text = "Playing"
+            case IJKMPMovieLoadState.Stalled:
+                this.statusLabel.text = "Buffering"
+            default:
+                this.statusLabel.text = "Playing"
+            }
+        })
+
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         player.shutdown()
         socket.disconnect()
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     @IBAction func closeButtonPressed(sender: AnyObject) {
