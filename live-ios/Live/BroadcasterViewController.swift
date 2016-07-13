@@ -34,7 +34,7 @@ class BroadcasterViewController: UIViewController, VCSessionDelegate {
             self.socket.emit("create_room", self.room.key)
         }
         infoLabel.text = "Room: \(room.key)"
-          
+        
     }
     
     override func viewWillAppear(animated: Bool) {

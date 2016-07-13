@@ -24,7 +24,6 @@
 		B3401F481D3394BC00ECF1CC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3401F471D3394BC00ECF1CC /* AVFoundation.framework */; };
 		B3401F4A1D3394C400ECF1CC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3401F491D3394C400ECF1CC /* AudioToolbox.framework */; };
 		B3401F501D34960700ECF1CC /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3401F4F1D34960700ECF1CC /* DesignableButton.swift */; };
-		B3401F521D34A74A00ECF1CC /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3401F511D34A74A00ECF1CC /* Config.swift */; };
 		B3401F561D34C1A200ECF1CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3401F551D34C1A200ECF1CC /* Assets.xcassets */; };
 		B3401F581D34C3F100ECF1CC /* WaveEmitterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3401F571D34C3F100ECF1CC /* WaveEmitterView.swift */; };
 		B3401F5A1D34C54100ECF1CC /* LiveOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3401F591D34C54100ECF1CC /* LiveOverlayViewController.swift */; };
@@ -38,6 +37,7 @@
 		B3401F6E1D35E22800ECF1CC /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3401F6D1D35E22800ECF1CC /* R.generated.swift */; };
 		B3401F711D35E48000ECF1CC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3401F701D35E48000ECF1CC /* Model.swift */; };
 		B3401F731D35F34E00ECF1CC /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3401F721D35F34E00ECF1CC /* TextField.swift */; };
+		B3401F761D3631B300ECF1CC /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3401F751D3631B300ECF1CC /* Config.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,7 +63,6 @@
 		B3401F471D3394BC00ECF1CC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B3401F491D3394C400ECF1CC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B3401F4F1D34960700ECF1CC /* DesignableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableButton.swift; sourceTree = "<group>"; };
-		B3401F511D34A74A00ECF1CC /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Config.swift; path = ../../../../../Documents/Config.swift; sourceTree = "<group>"; };
 		B3401F551D34C1A200ECF1CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3401F571D34C3F100ECF1CC /* WaveEmitterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveEmitterView.swift; sourceTree = "<group>"; };
 		B3401F591D34C54100ECF1CC /* LiveOverlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveOverlayViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +76,7 @@
 		B3401F6D1D35E22800ECF1CC /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		B3401F701D35E48000ECF1CC /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		B3401F721D35F34E00ECF1CC /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		B3401F751D3631B300ECF1CC /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +139,6 @@
 			isa = PBXGroup;
 			children = (
 				B3401F6D1D35E22800ECF1CC /* R.generated.swift */,
-				B3401F511D34A74A00ECF1CC /* Config.swift */,
 				B3401F4E1D3495EB00ECF1CC /* Home */,
 				B3401F4D1D3495E200ECF1CC /* Foundation */,
 				B3401F5B1D35DBF000ECF1CC /* Resources */,
@@ -148,6 +147,7 @@
 				B32E39341D336A5500FA87AB /* LaunchScreen.storyboard */,
 				B32E39371D336A5500FA87AB /* Info.plist */,
 				B3401F2A1D3389A800ECF1CC /* Live-Bridging-Header.h */,
+				B3401F751D3631B300ECF1CC /* Config.swift */,
 			);
 			path = Live;
 			sourceTree = "<group>";
@@ -357,6 +357,7 @@
 				B3401F6A1D35DCA400ECF1CC /* String.swift in Sources */,
 				B3401F6E1D35E22800ECF1CC /* R.generated.swift in Sources */,
 				B3401F331D33903100ECF1CC /* AudienceViewController.swift in Sources */,
+				B3401F761D3631B300ECF1CC /* Config.swift in Sources */,
 				B3401F2F1D33901600ECF1CC /* HomeViewController.swift in Sources */,
 				B3401F5A1D34C54100ECF1CC /* LiveOverlayViewController.swift in Sources */,
 				B3401F731D35F34E00ECF1CC /* TextField.swift in Sources */,
@@ -369,7 +370,6 @@
 				B3401F6B1D35DCA400ECF1CC /* UIView.swift in Sources */,
 				B3401F581D34C3F100ECF1CC /* WaveEmitterView.swift in Sources */,
 				B3401F311D33902300ECF1CC /* BroadcasterViewController.swift in Sources */,
-				B3401F521D34A74A00ECF1CC /* Config.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
