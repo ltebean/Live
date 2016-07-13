@@ -74,8 +74,9 @@ Lots of live stream cloud already covers the media server and cdn parts. You jus
 
 #### 2. iOS RTMP libs
 There are serveral open source projects supporting RTMP, this project uses:
-* VideoCore to push rtmp stream
-* IJKPlayer to pull rtmp stream
+* VideoCore(https://github.com/jgh-/VideoCore) to push rtmp stream
+* IJKPlayer(https://github.com/Bilibili/ijkplayer) to pull rtmp stream
+
 You can find the usage of these libs in their project pages.
 
 
