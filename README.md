@@ -4,6 +4,8 @@ This is project is to demonstrate how to build a live broadcast app. It include 
 * join a room to watch the live
 * send upvotes and comments
 
+![image](https://cloud.githubusercontent.com/assets/1646564/16791969/658d8e66-48f6-11e6-8329-6e9ef7f43e75.png)
+
 
 ## Introduction
 
