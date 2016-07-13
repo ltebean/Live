@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="fEL-Zt-6G9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="kPp-GM-YLq">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Raleway-Regular.ttf">
+            <string>Raleway-Regular</string>
+            <string>Raleway-Regular</string>
+            <string>Raleway-Regular</string>
+            <string>Raleway-Regular</string>
+            <string>Raleway-Regular</string>
+            <string>Raleway-Regular</string>
+            <string>Raleway-Regular</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Live-->
         <scene sceneID="52H-8O-xia">
             <objects>
-                <viewController id="fEL-Zt-6G9" sceneMemberID="viewController">
+                <viewController id="fEL-Zt-6G9" customClass="HomeViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="57u-o4-UdL"/>
                         <viewControllerLayoutGuide type="bottom" id="sRD-NJ-vWc"/>
@@ -18,70 +29,65 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SaS-Ll-i1a" customClass="DesignableButton" customModule="Live" customModuleProvider="target">
-                                <rect key="frame" x="70" y="305" width="180" height="50"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="watch"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="Vxb-jQ-Paq" kind="modal" id="V5Z-IQ-a1Z"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSH-Ll-40o" customClass="DesignableButton" customModule="Live" customModuleProvider="target">
-                                <rect key="frame" x="70" y="209" width="180" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="180" id="MQj-hy-JPp"/>
-                                    <constraint firstAttribute="height" constant="50" id="dDX-X6-Ds6"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="broadcast">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="modal" id="p1H-sT-V1r"/>
-                                </connections>
-                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="58" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GHN-gq-j0H">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" textLabel="jFw-iO-1pJ" rowHeight="60" style="IBUITableViewCellStyleDefault" id="y1S-pT-RYZ">
+                                        <rect key="frame" x="0.0" y="92" width="320" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="y1S-pT-RYZ" id="vLS-cm-jne">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jFw-iO-1pJ">
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="59"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="fSH-Ll-40o" firstAttribute="centerY" secondItem="zen-kG-nyY" secondAttribute="centerY" constant="-50" id="1jL-u5-Xh3"/>
-                            <constraint firstItem="SaS-Ll-i1a" firstAttribute="centerX" secondItem="fSH-Ll-40o" secondAttribute="centerX" id="7eH-hE-Tvh"/>
-                            <constraint firstItem="fSH-Ll-40o" firstAttribute="centerX" secondItem="zen-kG-nyY" secondAttribute="centerX" id="K3D-VE-Lz3"/>
-                            <constraint firstItem="SaS-Ll-i1a" firstAttribute="height" secondItem="fSH-Ll-40o" secondAttribute="height" id="M6e-oC-hFz"/>
-                            <constraint firstItem="SaS-Ll-i1a" firstAttribute="top" secondItem="fSH-Ll-40o" secondAttribute="bottom" constant="46" id="hM9-Tk-bKi"/>
-                            <constraint firstItem="SaS-Ll-i1a" firstAttribute="width" secondItem="fSH-Ll-40o" secondAttribute="width" id="q5l-3S-vAI"/>
+                            <constraint firstAttribute="trailing" secondItem="GHN-gq-j0H" secondAttribute="trailing" id="0Ij-FA-KME"/>
+                            <constraint firstItem="sRD-NJ-vWc" firstAttribute="top" secondItem="GHN-gq-j0H" secondAttribute="bottom" id="BBB-YD-mcO"/>
+                            <constraint firstItem="GHN-gq-j0H" firstAttribute="top" secondItem="57u-o4-UdL" secondAttribute="bottom" id="bSI-sa-Tne"/>
+                            <constraint firstItem="GHN-gq-j0H" firstAttribute="leading" secondItem="zen-kG-nyY" secondAttribute="leading" id="bhG-iB-i8n"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Live" id="fDB-yV-5Cx">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="fAL-jU-E9I">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="newButtonPressed:" destination="fEL-Zt-6G9" id="IaV-gG-tmD"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="fiP-Bg-56V">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="refreshButtonPressed:" destination="fEL-Zt-6G9" id="yai-0l-yqe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="GHN-gq-j0H" id="8wU-Kg-4Bx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iPY-hK-28J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-271" y="724"/>
+            <point key="canvasLocation" x="261" y="724"/>
         </scene>
         <!--Broadcaster View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="BroadcasterViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="broadcast" id="BYZ-38-t0r" customClass="BroadcasterViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -96,7 +102,7 @@
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LcV-Jj-LLZ">
                                 <rect key="frame" x="144" y="42" width="33" height="16"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -108,15 +114,13 @@
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="reE-Cx-F2s" customClass="DesignableButton" customModule="Live" customModuleProvider="target">
                                 <rect key="frame" x="10" y="30" width="40" height="40"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.6007036791" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="KoZ-Ib-eoO"/>
                                     <constraint firstAttribute="height" constant="40" id="lbE-PV-kR6"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="close">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="12"/>
+                                <state key="normal" title="close"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="20"/>
@@ -126,6 +130,12 @@
                                     <action selector="closeButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kHU-Zb-WIs"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSg-rs-5jg" userLabel="i">
+                                <rect key="frame" x="294" y="50" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -140,22 +150,25 @@
                             <constraint firstItem="LcV-Jj-LLZ" firstAttribute="centerY" secondItem="reE-Cx-F2s" secondAttribute="centerY" id="Xdv-QS-Gqx"/>
                             <constraint firstItem="reE-Cx-F2s" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="cJl-Wp-n0J"/>
                             <constraint firstItem="ld9-Gf-fY4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="cqN-r2-in2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MSg-rs-5jg" secondAttribute="trailing" constant="10" id="cxn-qP-SUg"/>
                             <constraint firstItem="ld9-Gf-fY4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="hAQ-3L-DWA"/>
+                            <constraint firstItem="MSg-rs-5jg" firstAttribute="centerY" secondItem="LcV-Jj-LLZ" secondAttribute="centerY" id="mmk-og-RJa"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="infoLabel" destination="MSg-rs-5jg" id="Srz-Wv-Way"/>
                         <outlet property="previewView" destination="EOl-1F-OLr" id="sRN-dv-F8R"/>
                         <outlet property="statusLabel" destination="LcV-Jj-LLZ" id="PpT-xG-nO3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="236" y="316"/>
+            <point key="canvasLocation" x="768" y="316"/>
         </scene>
         <!--Audience View Controller-->
         <scene sceneID="3Dq-hy-wSH">
             <objects>
-                <viewController id="Vxb-jQ-Paq" customClass="AudienceViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="audience" id="Vxb-jQ-Paq" customClass="AudienceViewController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6ao-mN-drc"/>
                         <viewControllerLayoutGuide type="bottom" id="UAw-4X-Jde"/>
@@ -176,15 +189,13 @@
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nng-GW-XVE" customClass="DesignableButton" customModule="Live" customModuleProvider="target">
                                 <rect key="frame" x="10" y="30" width="40" height="40"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.6007036791" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="3hD-Xa-HDF"/>
                                     <constraint firstAttribute="width" constant="40" id="a6n-zJ-xrX"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="close">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="12"/>
+                                <state key="normal" title="close"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="20"/>
@@ -215,7 +226,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bCS-NG-H6i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="241" y="976"/>
+            <point key="canvasLocation" x="773" y="976"/>
         </scene>
         <!--Live Overlay View Controller-->
         <scene sceneID="Lyt-Rk-gH7">
@@ -240,12 +251,17 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C92-Af-cfR">
                                 <rect key="frame" x="0.0" y="498" width="320" height="70"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Say something" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rRg-DL-pEl">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Say something" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rRg-DL-pEl" customClass="TextField" customModule="Live" customModuleProvider="target">
                                         <rect key="frame" x="15" y="15" width="290" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="13"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="insetX">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -257,27 +273,7 @@
                                     <constraint firstItem="rRg-DL-pEl" firstAttribute="top" secondItem="C92-Af-cfR" secondAttribute="top" constant="15" id="wck-pF-Ubt"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jgw-Cg-FdB" customClass="DesignableButton" customModule="Live" customModuleProvider="target">
-                                <rect key="frame" x="257" y="452" width="46" height="46"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="p90-9v-ZY5"/>
-                                    <constraint firstAttribute="width" constant="46" id="w5z-zD-La4"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <state key="normal" title="upvote">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="23"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="upvoteButtonPressed:" destination="GmT-t2-do1" eventType="touchUpInside" id="N8R-rb-OvJ"/>
-                                </connections>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fAt-JF-x6f">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fAt-JF-x6f">
                                 <rect key="frame" x="15" y="190" width="160" height="300"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -292,29 +288,60 @@
                                             <rect key="frame" x="0.0" y="0.0" width="160" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="47u-Zd-lMP">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="buS-w1-Cb7">
                                                     <rect key="frame" x="0.0" y="5" width="160" height="60"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="47u-Zd-lMP">
+                                                            <rect key="frame" x="6" y="6" width="148" height="48"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.60070367907801414" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="47u-Zd-lMP" firstAttribute="leading" secondItem="buS-w1-Cb7" secondAttribute="leading" constant="6" id="NVt-k0-6hK"/>
+                                                        <constraint firstAttribute="bottom" secondItem="47u-Zd-lMP" secondAttribute="bottom" constant="6" id="QcP-x7-MAG"/>
+                                                        <constraint firstAttribute="trailing" secondItem="47u-Zd-lMP" secondAttribute="trailing" constant="6" id="g99-qs-J9p"/>
+                                                        <constraint firstItem="47u-Zd-lMP" firstAttribute="top" secondItem="buS-w1-Cb7" secondAttribute="top" constant="6" id="laQ-Z6-amC"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="47u-Zd-lMP" firstAttribute="leading" secondItem="QSi-P9-YWA" secondAttribute="leading" id="4fw-eX-LKf"/>
-                                                <constraint firstAttribute="trailing" secondItem="47u-Zd-lMP" secondAttribute="trailing" id="Bfw-Ga-Wam"/>
-                                                <constraint firstAttribute="bottom" secondItem="47u-Zd-lMP" secondAttribute="bottom" constant="5" id="DyS-oh-TIO"/>
-                                                <constraint firstItem="47u-Zd-lMP" firstAttribute="top" secondItem="QSi-P9-YWA" secondAttribute="top" constant="5" id="edw-9Y-saZ"/>
+                                                <constraint firstAttribute="bottom" secondItem="buS-w1-Cb7" secondAttribute="bottom" constant="5" id="hqr-Nu-9Yg"/>
+                                                <constraint firstItem="buS-w1-Cb7" firstAttribute="top" secondItem="QSi-P9-YWA" secondAttribute="top" constant="5" id="mbZ-Bc-gxG"/>
+                                                <constraint firstItem="buS-w1-Cb7" firstAttribute="leading" secondItem="QSi-P9-YWA" secondAttribute="leading" id="moW-D5-EZv"/>
+                                                <constraint firstAttribute="trailing" secondItem="buS-w1-Cb7" secondAttribute="trailing" id="te1-se-RD3"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="commentContainer" destination="buS-w1-Cb7" id="r7z-sc-a6Z"/>
                                             <outlet property="titleLabel" destination="47u-Zd-lMP" id="NFg-VS-4ID"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jgw-Cg-FdB" customClass="DesignableButton" customModule="Live" customModuleProvider="target">
+                                <rect key="frame" x="257" y="452" width="46" height="46"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.6007036791" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="p90-9v-ZY5"/>
+                                    <constraint firstAttribute="width" constant="46" id="w5z-zD-La4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="11"/>
+                                <state key="normal" title="upvote"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="23"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="upvoteButtonPressed:" destination="GmT-t2-do1" eventType="touchUpInside" id="N8R-rb-OvJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -338,7 +365,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QPk-3P-8dc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="874" y="686"/>
+            <point key="canvasLocation" x="1406" y="686"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6Mp-6a-XxR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kPp-GM-YLq" customClass="NavigationController" customModule="Live" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uqv-yX-KK5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="fEL-Zt-6G9" kind="relationship" relationship="rootViewController" id="YxA-3x-sOS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Wf-LB-1gD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-271" y="724"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

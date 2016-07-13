@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TextAttributes
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,8 +17,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        setupAppearance()
         return true
     }
+    
+    private func setupAppearance() {
+        let navigationBar = UINavigationBar.appearance();
+        navigationBar.tintColor = UIColor.whiteColor()
+        navigationBar.barTintColor = UIColor.primaryColor()
+        navigationBar.translucent = false
+        let titleAttrs = TextAttributes()
+            .font(UIFont.defaultFont(size: 19))
+            .foregroundColor(UIColor.whiteColor())
+        navigationBar.titleTextAttributes = titleAttrs.dictionary
+        
+        let barButtonItem = UIBarButtonItem.appearance()
+        let barButtonAttrs = TextAttributes()
+            .font(UIFont.defaultFont(size: 15))
+            .foregroundColor(UIColor.whiteColor())
+        barButtonItem.setTitleTextAttributes(barButtonAttrs.dictionary, forState: .Normal)
+        barButtonItem.setTitleTextAttributes(barButtonAttrs.dictionary, forState: .Highlighted)
+        
+    }
+
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

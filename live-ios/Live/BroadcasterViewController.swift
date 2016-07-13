@@ -14,10 +14,12 @@ class BroadcasterViewController: UIViewController, VCSessionDelegate {
         
     @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var infoLabel: UILabel!
     
-    let socket = SocketIOClient(socketURL: NSURL(string: Config.socketUrl)!, options: [.Log(true), .ForceWebsockets(true)])
+    let socket = SocketIOClient(socketURL: NSURL(string: Config.serverUrl)!, options: [.Log(true), .ForceWebsockets(true)])
 
     let session = VCSimpleSession(videoSize: CGSize(width: 720, height: 1280), frameRate: 20, bitrate: 1000000, useInterfaceOrientation: false)
+    var room: Room!
     
     var overlayController: LiveOverlayViewController!
 
@@ -29,21 +31,25 @@ class BroadcasterViewController: UIViewController, VCSessionDelegate {
         session.delegate = self
         
         socket.on("connect") {data, ack in
-            self.socket.emit("join")
+            self.socket.emit("create_room", self.room.key)
         }
+        infoLabel.text = "room: \(room.key)"
           
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         socket.connect()
-        session.startRtmpSessionWithURL(Config.rtmpPushUrl, andStreamKey: Config.rtmpKey)
-
+        session.startRtmpSessionWithURL(Config.rtmpPushUrl, andStreamKey: room.key)
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        socket.disconnect()
+        
+        socket.emitWithAck("close_room", room.key)(timeoutAfter: 0) {data in
+            self.socket.disconnect()
+        }
+        
         session.endRtmpSession()
 
     }
@@ -52,6 +58,7 @@ class BroadcasterViewController: UIViewController, VCSessionDelegate {
         if segue.identifier == "overlay" {
             overlayController = segue.destinationViewController as! LiveOverlayViewController
             overlayController.socket = socket
+            overlayController.room = room
         }
     }
 

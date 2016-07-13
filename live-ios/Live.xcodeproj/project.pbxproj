@@ -28,6 +28,16 @@
 		B3401F561D34C1A200ECF1CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3401F551D34C1A200ECF1CC /* Assets.xcassets */; };
 		B3401F581D34C3F100ECF1CC /* WaveEmitterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3401F571D34C3F100ECF1CC /* WaveEmitterView.swift */; };
 		B3401F5A1D34C54100ECF1CC /* LiveOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3401F591D34C54100ECF1CC /* LiveOverlayViewController.swift */; };
+		B3401F5D1D35DBF900ECF1CC /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B3401F5C1D35DBF900ECF1CC /* Raleway-Regular.ttf */; };
+		B3401F661D35DCA400ECF1CC /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3401F601D35DCA400ECF1CC /* NavigationController.swift */; };
+		B3401F671D35DCA400ECF1CC /* XibBasedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3401F611D35DCA400ECF1CC /* XibBasedView.swift */; };
+		B3401F681D35DCA400ECF1CC /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3401F621D35DCA400ECF1CC /* UIColor.swift */; };
+		B3401F691D35DCA400ECF1CC /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3401F631D35DCA400ECF1CC /* UIFont.swift */; };
+		B3401F6A1D35DCA400ECF1CC /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3401F641D35DCA400ECF1CC /* String.swift */; };
+		B3401F6B1D35DCA400ECF1CC /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3401F651D35DCA400ECF1CC /* UIView.swift */; };
+		B3401F6E1D35E22800ECF1CC /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3401F6D1D35E22800ECF1CC /* R.generated.swift */; };
+		B3401F711D35E48000ECF1CC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3401F701D35E48000ECF1CC /* Model.swift */; };
+		B3401F731D35F34E00ECF1CC /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3401F721D35F34E00ECF1CC /* TextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +67,16 @@
 		B3401F551D34C1A200ECF1CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3401F571D34C3F100ECF1CC /* WaveEmitterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveEmitterView.swift; sourceTree = "<group>"; };
 		B3401F591D34C54100ECF1CC /* LiveOverlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveOverlayViewController.swift; sourceTree = "<group>"; };
+		B3401F5C1D35DBF900ECF1CC /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
+		B3401F601D35DCA400ECF1CC /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		B3401F611D35DCA400ECF1CC /* XibBasedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibBasedView.swift; sourceTree = "<group>"; };
+		B3401F621D35DCA400ECF1CC /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		B3401F631D35DCA400ECF1CC /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		B3401F641D35DCA400ECF1CC /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		B3401F651D35DCA400ECF1CC /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		B3401F6D1D35E22800ECF1CC /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		B3401F701D35E48000ECF1CC /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		B3401F721D35F34E00ECF1CC /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,10 +138,13 @@
 		B32E392A1D336A5500FA87AB /* Live */ = {
 			isa = PBXGroup;
 			children = (
-				B3401F551D34C1A200ECF1CC /* Assets.xcassets */,
+				B3401F6D1D35E22800ECF1CC /* R.generated.swift */,
+				B3401F511D34A74A00ECF1CC /* Config.swift */,
 				B3401F4E1D3495EB00ECF1CC /* Home */,
 				B3401F4D1D3495E200ECF1CC /* Foundation */,
+				B3401F5B1D35DBF000ECF1CC /* Resources */,
 				B32E392B1D336A5500FA87AB /* AppDelegate.swift */,
+				B3401F551D34C1A200ECF1CC /* Assets.xcassets */,
 				B32E39341D336A5500FA87AB /* LaunchScreen.storyboard */,
 				B32E39371D336A5500FA87AB /* Info.plist */,
 				B3401F2A1D3389A800ECF1CC /* Live-Bridging-Header.h */,
@@ -132,9 +155,15 @@
 		B3401F4D1D3495E200ECF1CC /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				B3401F511D34A74A00ECF1CC /* Config.swift */,
+				B3401F601D35DCA400ECF1CC /* NavigationController.swift */,
+				B3401F611D35DCA400ECF1CC /* XibBasedView.swift */,
+				B3401F621D35DCA400ECF1CC /* UIColor.swift */,
+				B3401F631D35DCA400ECF1CC /* UIFont.swift */,
+				B3401F641D35DCA400ECF1CC /* String.swift */,
+				B3401F651D35DCA400ECF1CC /* UIView.swift */,
 				B3401F4F1D34960700ECF1CC /* DesignableButton.swift */,
 				B3401F571D34C3F100ECF1CC /* WaveEmitterView.swift */,
+				B3401F721D35F34E00ECF1CC /* TextField.swift */,
 			);
 			name = Foundation;
 			sourceTree = "<group>";
@@ -147,8 +176,17 @@
 				B3401F301D33902300ECF1CC /* BroadcasterViewController.swift */,
 				B3401F321D33903100ECF1CC /* AudienceViewController.swift */,
 				B3401F591D34C54100ECF1CC /* LiveOverlayViewController.swift */,
+				B3401F701D35E48000ECF1CC /* Model.swift */,
 			);
 			name = Home;
+			sourceTree = "<group>";
+		};
+		B3401F5B1D35DBF000ECF1CC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B3401F5C1D35DBF900ECF1CC /* Raleway-Regular.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		FAED826B8503214362DF977D /* Pods */ = {
@@ -168,6 +206,7 @@
 			buildConfigurationList = B32E393A1D336A5500FA87AB /* Build configuration list for PBXNativeTarget "Live" */;
 			buildPhases = (
 				C06C07E75B86F93118F961F2 /* 📦 Check Pods Manifest.lock */,
+				B3401F6C1D35DEBF00ECF1CC /* R.swift */,
 				B32E39241D336A5500FA87AB /* Sources */,
 				B32E39251D336A5500FA87AB /* Frameworks */,
 				B32E39261D336A5500FA87AB /* Resources */,
@@ -226,6 +265,7 @@
 				B32E39361D336A5500FA87AB /* LaunchScreen.storyboard in Resources */,
 				B3401F561D34C1A200ECF1CC /* Assets.xcassets in Resources */,
 				B32E39311D336A5500FA87AB /* Main.storyboard in Resources */,
+				B3401F5D1D35DBF900ECF1CC /* Raleway-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +317,20 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Live/Pods-Live-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B3401F6C1D35DEBF00ECF1CC /* R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = R.swift;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/R.swift/rswift\" \"${SRCROOT}/Live/\"";
+		};
 		C06C07E75B86F93118F961F2 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -300,10 +354,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				B32E392C1D336A5500FA87AB /* AppDelegate.swift in Sources */,
+				B3401F6A1D35DCA400ECF1CC /* String.swift in Sources */,
+				B3401F6E1D35E22800ECF1CC /* R.generated.swift in Sources */,
 				B3401F331D33903100ECF1CC /* AudienceViewController.swift in Sources */,
 				B3401F2F1D33901600ECF1CC /* HomeViewController.swift in Sources */,
 				B3401F5A1D34C54100ECF1CC /* LiveOverlayViewController.swift in Sources */,
+				B3401F731D35F34E00ECF1CC /* TextField.swift in Sources */,
+				B3401F661D35DCA400ECF1CC /* NavigationController.swift in Sources */,
+				B3401F711D35E48000ECF1CC /* Model.swift in Sources */,
 				B3401F501D34960700ECF1CC /* DesignableButton.swift in Sources */,
+				B3401F671D35DCA400ECF1CC /* XibBasedView.swift in Sources */,
+				B3401F681D35DCA400ECF1CC /* UIColor.swift in Sources */,
+				B3401F691D35DCA400ECF1CC /* UIFont.swift in Sources */,
+				B3401F6B1D35DCA400ECF1CC /* UIView.swift in Sources */,
 				B3401F581D34C3F100ECF1CC /* WaveEmitterView.swift in Sources */,
 				B3401F311D33902300ECF1CC /* BroadcasterViewController.swift in Sources */,
 				B3401F521D34A74A00ECF1CC /* Config.swift in Sources */,

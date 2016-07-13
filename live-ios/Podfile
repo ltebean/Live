@@ -4,6 +4,9 @@
 use_frameworks!
 
 target 'Live' do
+pod 'SVProgressHUD'
+pod 'TextAttributes'
+pod 'R.swift'
 pod 'IHKeyboardAvoiding'
 pod 'Socket.IO-Client-Swift'
 pod 'VideoCore/Swift', :git => 'https://github.com/maxcampolo/VideoCore.git', :branch => 'update_headers'

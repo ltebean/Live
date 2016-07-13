@@ -14,9 +14,10 @@ class AudienceViewController: UIViewController {
 
     @IBOutlet weak var previewView: UIView!
     
-    let player = IJKFFMoviePlayerController(contentURL: NSURL(string: Config.rtmpPlayUrl + Config.rtmpKey), withOptions: IJKFFOptions.optionsByDefault())
+    var room: Room!
     
-    let socket = SocketIOClient(socketURL: NSURL(string: Config.socketUrl)!, options: [.Log(true), .ForcePolling(true)])
+    var player: IJKFFMoviePlayerController!
+    let socket = SocketIOClient(socketURL: NSURL(string: Config.serverUrl)!, options: [.Log(true), .ForcePolling(true)])
     
     var overlayController: LiveOverlayViewController!
 
@@ -24,6 +25,7 @@ class AudienceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        player = IJKFFMoviePlayerController(contentURL: NSURL(string: Config.rtmpPlayUrl + room.key), withOptions: IJKFFOptions.optionsByDefault())
         
         player.view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         player.view.frame = previewView.bounds
@@ -32,7 +34,7 @@ class AudienceViewController: UIViewController {
         player.prepareToPlay()
         
         socket.on("connect") {data, ack in
-            self.socket.emit("join")
+            self.socket.emit("join_room", self.room.key)
         }
         
     }
@@ -41,6 +43,7 @@ class AudienceViewController: UIViewController {
         if segue.identifier == "overlay" {
             overlayController = segue.destinationViewController as! LiveOverlayViewController
             overlayController.socket = socket
+            overlayController.room = room
         }
     }
     

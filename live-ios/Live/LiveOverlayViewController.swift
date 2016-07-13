@@ -17,19 +17,18 @@ class LiveOverlayViewController: UIViewController {
     @IBOutlet weak var inputContainer: UIView!
     @IBOutlet weak var tableView: UITableView!
     
-    var comments: [String] = []
+    var comments: [Comment] = []
+    var room: Room!
     
-    var socket: SocketIOClient! {
-        didSet {
-            setup()
-        }
-    }
+    var socket: SocketIOClient!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        textField.layer.borderWidth = 1
+        textField.layer.borderWidth = 0.5
+        textField.layer.cornerRadius = 5
         textField.layer.borderColor = UIColor.whiteColor().CGColor
+        
         textField.delegate = self
         
         tableView.dataSource = self
@@ -38,6 +37,16 @@ class LiveOverlayViewController: UIViewController {
         IHKeyboardAvoiding.setAvoidingView(inputContainer)
         
         NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(LiveOverlayViewController.tick(_:)), userInfo: nil, repeats: true)
+        
+        socket.on("upvote") {data ,ack in
+            self.emitterView.emitImage(R.image.heart()!)
+        }
+        
+        socket.on("comment") {data ,ack in
+            let comment = Comment(dict: data[0] as! [String: AnyObject])
+            self.comments.append(comment)
+            self.tableView.reloadData()
+        }
         
     }
     
@@ -48,20 +57,6 @@ class LiveOverlayViewController: UIViewController {
         tableView.reloadData()
         
     }
-    
-
-    func setup() {
-        socket.on("upvote") {data ,ack in
-            self.emitterView.emitImage(UIImage(named: "image-2")!)
-        }
-        
-        socket.on("comment") {data ,ack in
-            let comment = data[0] as! String
-            self.comments.append(comment)
-            self.tableView.reloadData()
-        }
-    }
-
     
     func tick(timer: NSTimer) {
         guard comments.count > 0 else {
@@ -74,7 +69,7 @@ class LiveOverlayViewController: UIViewController {
     }
 
     @IBAction func upvoteButtonPressed(sender: AnyObject) {
-        socket.emit("upvote")
+        socket.emit("upvote", room.key)
     }
 }
 
@@ -84,7 +79,10 @@ extension LiveOverlayViewController: UITextFieldDelegate {
         if string == "\n" {
             textField.resignFirstResponder()
             if let text = textField.text where text != "" {
-                socket.emit("comment", text)
+                socket.emit("comment", [
+                    "roomKey": room.key,
+                    "text": text
+                ])
             }
             textField.text = ""
             return false
@@ -119,17 +117,24 @@ class CommentCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     
-    var comment: String = "" {
+    @IBOutlet weak var commentContainer: UIView!
+    
+    var comment: Comment! {
         didSet {
             updateUI()
         }
     }
     
-    func updateUI() {
-        titleLabel.text = " \(comment) "
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        commentContainer.layer.cornerRadius = 3
     }
     
-    static func heightForComment(comment: String) -> CGFloat {
-        return 50
+    func updateUI() {
+        titleLabel.attributedText = comment.text.attributedComment()
+    }
+    
+    static func heightForComment(comment: Comment) -> CGFloat {
+        return comment.text.attributedComment().heightWithConstrainedWidth(160 - 2 * 6) + (5 + 6) * 2
     }
 }

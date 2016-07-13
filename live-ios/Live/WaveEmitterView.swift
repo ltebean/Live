@@ -6,12 +6,12 @@
 //  Copyright © 2016年 io.ltebean. All rights reserved.
 //
 
-import UIKit
+
 
 public class WaveEmitterView : UIView {
     
-    public var amplitudeRange = 12
-    public var amplitude = 3
+    public var amplitudeRange = 3
+    public var amplitude = 12
     
     public var duration: CFTimeInterval = 4
     public var durationRange: CFTimeInterval = 1
