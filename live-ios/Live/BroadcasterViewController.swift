@@ -20,6 +20,7 @@ class BroadcasterViewController: UIViewController, VCSessionDelegate {
 
     let session = VCSimpleSession(videoSize: CGSize(width: 720, height: 1280), frameRate: 20, bitrate: 1000000, useInterfaceOrientation: false)
     var room: Room!
+    var created = false
     
     var overlayController: LiveOverlayViewController!
 
@@ -30,11 +31,19 @@ class BroadcasterViewController: UIViewController, VCSessionDelegate {
         session.previewView.frame = previewView.bounds
         session.delegate = self
         
-        socket.on("connect") {data, ack in
-            self.socket.emit("create_room", self.room.key)
+        socket.on("connect") {[weak self] data, ack in
+            self?.createRoom()
         }
         infoLabel.text = "Room: \(room.key)"
         
+    }
+    
+    func createRoom() {
+        if created {
+            return
+        }
+        created = true
+        socket.emit("create_room", room.key)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -46,7 +55,7 @@ class BroadcasterViewController: UIViewController, VCSessionDelegate {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
-        socket.emitWithAck("close_room", room.key)(timeoutAfter: 0) {data in
+        socket.emitWithAck("close_room", room.key)(timeoutAfter: 0) { data in
             self.socket.disconnect()
         }
         

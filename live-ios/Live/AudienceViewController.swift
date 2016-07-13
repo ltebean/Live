@@ -33,10 +33,14 @@ class AudienceViewController: UIViewController {
         
         player.prepareToPlay()
         
-        socket.on("connect") {data, ack in
-            self.socket.emit("join_room", self.room.key)
+        socket.on("connect") {[weak self] data, ack in
+            self?.joinRoom()
         }
         
+    }
+    
+    func joinRoom() {
+        socket.emit("join_room", room.key)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

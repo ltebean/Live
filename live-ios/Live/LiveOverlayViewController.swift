@@ -41,14 +41,14 @@ class LiveOverlayViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(LiveOverlayViewController.handleTap(_:)))
         view.addGestureRecognizer(tap)
         
-        socket.on("upvote") {data ,ack in
-            self.emitterView.emitImage(R.image.heart()!)
+        socket.on("upvote") {[weak self] data ,ack in
+            self?.emitterView.emitImage(R.image.heart()!)
         }
         
-        socket.on("comment") {data ,ack in
+        socket.on("comment") {[weak self] data ,ack in
             let comment = Comment(dict: data[0] as! [String: AnyObject])
-            self.comments.append(comment)
-            self.tableView.reloadData()
+            self?.comments.append(comment)
+            self?.tableView.reloadData()
         }
         
     }
