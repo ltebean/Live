@@ -248,31 +248,24 @@
                                     <constraint firstAttribute="height" constant="400" id="edZ-ru-nXb"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C92-Af-cfR">
-                                <rect key="frame" x="0.0" y="498" width="320" height="70"/>
-                                <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Say something" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rRg-DL-pEl" customClass="TextField" customModule="Live" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="15" width="290" height="40"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="13"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="insetX">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </textField>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jgw-Cg-FdB" customClass="DesignableButton" customModule="Live" customModuleProvider="target">
+                                <rect key="frame" x="257" y="452" width="46" height="46"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.6007036791" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="rRg-DL-pEl" secondAttribute="bottom" constant="15" id="7y0-Bi-ygW"/>
-                                    <constraint firstItem="rRg-DL-pEl" firstAttribute="leading" secondItem="C92-Af-cfR" secondAttribute="leading" constant="15" id="AVE-6d-Ve2"/>
-                                    <constraint firstAttribute="height" constant="70" id="dZg-ej-noV"/>
-                                    <constraint firstAttribute="trailing" secondItem="rRg-DL-pEl" secondAttribute="trailing" constant="15" id="oWg-Cv-6Z5"/>
-                                    <constraint firstItem="rRg-DL-pEl" firstAttribute="top" secondItem="C92-Af-cfR" secondAttribute="top" constant="15" id="wck-pF-Ubt"/>
+                                    <constraint firstAttribute="height" constant="46" id="p90-9v-ZY5"/>
+                                    <constraint firstAttribute="width" constant="46" id="w5z-zD-La4"/>
                                 </constraints>
-                            </view>
+                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="12"/>
+                                <state key="normal" title="like"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="23"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="upvoteButtonPressed:" destination="GmT-t2-do1" eventType="touchUpInside" id="N8R-rb-OvJ"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fAt-JF-x6f">
                                 <rect key="frame" x="15" y="190" width="160" height="300"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -324,24 +317,31 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jgw-Cg-FdB" customClass="DesignableButton" customModule="Live" customModuleProvider="target">
-                                <rect key="frame" x="257" y="452" width="46" height="46"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.6007036791" colorSpace="calibratedRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C92-Af-cfR">
+                                <rect key="frame" x="0.0" y="498" width="320" height="70"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Say something" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rRg-DL-pEl" customClass="TextField" customModule="Live" customModuleProvider="target">
+                                        <rect key="frame" x="15" y="15" width="290" height="40"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="13"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="insetX">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="p90-9v-ZY5"/>
-                                    <constraint firstAttribute="width" constant="46" id="w5z-zD-La4"/>
+                                    <constraint firstAttribute="bottom" secondItem="rRg-DL-pEl" secondAttribute="bottom" constant="15" id="7y0-Bi-ygW"/>
+                                    <constraint firstItem="rRg-DL-pEl" firstAttribute="leading" secondItem="C92-Af-cfR" secondAttribute="leading" constant="15" id="AVE-6d-Ve2"/>
+                                    <constraint firstAttribute="height" constant="70" id="dZg-ej-noV"/>
+                                    <constraint firstAttribute="trailing" secondItem="rRg-DL-pEl" secondAttribute="trailing" constant="15" id="oWg-Cv-6Z5"/>
+                                    <constraint firstItem="rRg-DL-pEl" firstAttribute="top" secondItem="C92-Af-cfR" secondAttribute="top" constant="15" id="wck-pF-Ubt"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="11"/>
-                                <state key="normal" title="upvote"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="23"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="upvoteButtonPressed:" destination="GmT-t2-do1" eventType="touchUpInside" id="N8R-rb-OvJ"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -387,6 +387,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="66o-s1-S8a"/>
+        <segue reference="93g-pg-D1Y"/>
     </inferredMetricsTieBreakers>
 </document>

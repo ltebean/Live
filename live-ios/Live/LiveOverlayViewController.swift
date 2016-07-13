@@ -38,6 +38,9 @@ class LiveOverlayViewController: UIViewController {
         
         NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(LiveOverlayViewController.tick(_:)), userInfo: nil, repeats: true)
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(LiveOverlayViewController.handleTap(_:)))
+        view.addGestureRecognizer(tap)
+        
         socket.on("upvote") {data ,ack in
             self.emitterView.emitImage(R.image.heart()!)
         }
@@ -55,7 +58,13 @@ class LiveOverlayViewController: UIViewController {
         super.viewWillAppear(animated)
         tableView.contentInset.top = tableView.bounds.height
         tableView.reloadData()
-        
+    }
+    
+    func handleTap(gesture: UITapGestureRecognizer) {
+        guard gesture.state == .Ended else {
+            return
+        }
+        textField.resignFirstResponder()
     }
     
     func tick(timer: NSTimer) {
