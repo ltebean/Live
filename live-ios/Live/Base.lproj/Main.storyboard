@@ -14,6 +14,7 @@
             <string>Raleway-Regular</string>
             <string>Raleway-Regular</string>
             <string>Raleway-Regular</string>
+            <string>Raleway-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -187,6 +188,12 @@
                                     <segue destination="GmT-t2-do1" kind="embed" identifier="overlay" id="93g-pg-D1Y"/>
                                 </connections>
                             </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Loading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fT3-ap-CDB">
+                                <rect key="frame" x="160" y="50" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nng-GW-XVE" customClass="DesignableButton" customModule="Live" customModuleProvider="target">
                                 <rect key="frame" x="10" y="30" width="40" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.6007036791" colorSpace="calibratedRGB"/>
@@ -213,8 +220,10 @@
                             <constraint firstAttribute="trailing" secondItem="K6N-Fr-FJ5" secondAttribute="trailing" id="3zg-So-NsM"/>
                             <constraint firstItem="LCU-Xq-Jkq" firstAttribute="trailing" secondItem="K6N-Fr-FJ5" secondAttribute="trailing" id="66f-zE-8ya"/>
                             <constraint firstItem="Nng-GW-XVE" firstAttribute="top" secondItem="6ao-mN-drc" secondAttribute="bottom" constant="10" id="6Mb-PH-ln0"/>
+                            <constraint firstItem="fT3-ap-CDB" firstAttribute="centerX" secondItem="h8F-TU-VwT" secondAttribute="centerX" id="7ps-QU-xgK"/>
                             <constraint firstItem="UAw-4X-Jde" firstAttribute="top" secondItem="K6N-Fr-FJ5" secondAttribute="bottom" id="YHv-vA-wOZ"/>
                             <constraint firstItem="LCU-Xq-Jkq" firstAttribute="leading" secondItem="K6N-Fr-FJ5" secondAttribute="leading" id="mEI-r4-7d0"/>
+                            <constraint firstItem="fT3-ap-CDB" firstAttribute="centerY" secondItem="Nng-GW-XVE" secondAttribute="centerY" id="rbF-4q-Jna"/>
                             <constraint firstItem="LCU-Xq-Jkq" firstAttribute="top" secondItem="K6N-Fr-FJ5" secondAttribute="top" id="tB7-8L-bgE"/>
                             <constraint firstItem="LCU-Xq-Jkq" firstAttribute="bottom" secondItem="K6N-Fr-FJ5" secondAttribute="bottom" id="vPT-dX-3Z5"/>
                             <constraint firstItem="K6N-Fr-FJ5" firstAttribute="top" secondItem="6ao-mN-drc" secondAttribute="bottom" constant="-20" id="xUm-6Z-DYx"/>
@@ -222,11 +231,12 @@
                     </view>
                     <connections>
                         <outlet property="previewView" destination="K6N-Fr-FJ5" id="c1O-3Q-mCO"/>
+                        <outlet property="statusLabel" destination="fT3-ap-CDB" id="T1t-R1-Rg1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bCS-NG-H6i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="773" y="976"/>
+            <point key="canvasLocation" x="768" y="984"/>
         </scene>
         <!--Live Overlay View Controller-->
         <scene sceneID="Lyt-Rk-gH7">

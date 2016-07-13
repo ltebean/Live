@@ -13,6 +13,7 @@ import SocketIOClientSwift
 class AudienceViewController: UIViewController {
 
     @IBOutlet weak var previewView: UIView!
+    @IBOutlet weak var statusLabel: UILabel!
     
     var room: Room!
     
@@ -36,6 +37,24 @@ class AudienceViewController: UIViewController {
         socket.on("connect") {[weak self] data, ack in
             self?.joinRoom()
         }
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(IJKMPMoviePlayerLoadStateDidChangeNotification, object: player, queue: NSOperationQueue.mainQueue(), usingBlock: { [weak self] notification in
+            
+            guard let this = self else {
+                return
+            }
+            let state = this.player.loadState
+            switch state {
+            case IJKMPMovieLoadState.Playable:
+                this.statusLabel.text = "Playable"
+            case IJKMPMovieLoadState.PlaythroughOK:
+                this.statusLabel.text = "Playing"
+            case IJKMPMovieLoadState.Stalled:
+                this.statusLabel.text = "Buffering"
+            default:
+                this.statusLabel.text = "Playing"
+            }
+        })
         
     }
     
