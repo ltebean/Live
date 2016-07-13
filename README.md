@@ -71,11 +71,13 @@ For the media server, there are serveral choices:
 
 Lots of live stream cloud already covers the media server and cdn parts. You just need to push/pull the stream from it.
 
+
 #### 2. iOS RTMP libs
-There are serveral open source project support RTMP, this project uses
+There are serveral open source projects supporting RTMP, this project uses:
 * VideoCore to push rtmp stream
 * IJKPlayer to pull rtmp stream
 You can find the usage of these libs in their project pages.
+
 
 #### 3. Websocket server
 This project uses socket.io to handle the client-server communication, the logic is very simple, on the server side:
@@ -115,12 +117,16 @@ io.on('connection', function(socket) {
 
 ```
 
-On the client side, it uses the socket.io swift client(https://github.com/socketio/socket.io-client-swift), the logic is also simple,
+On the client side, it uses the socket.io swift client(https://github.com/socketio/socket.io-client-swift), the logic is also simple:
 
-create or close a room:
+create, join, or close a room:
 ```swift
 socket.on("connect") {data, ack in
     self.socket.emit("create_room", self.room.key)
+}
+
+socket.on("connect") {data, ack in
+    self.socket.emit("join_room", self.room.key)
 }
 
 socket.emitWithAck("close_room", room.key)(timeoutAfter: 0) {data in
