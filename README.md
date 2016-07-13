@@ -28,9 +28,7 @@ Just go to the `live-server` folder, run `npm install`, then start the server by
 
 Go the the `live-ios` folder, run `pod install`(must use cocoapods 0.39.0)
 
-Download `IJKMediaFramework.framework` then add it into the project.
-
-In Config.swift, update the rtmp and websocket server url:
+In Config.swift, update the server url:
 ```
 struct Config {
     static var rtmpPushUrl = "rtmp://139.196.232.10/live/"
