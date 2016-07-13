@@ -15,9 +15,11 @@ This project is to demonstrate how to build a live broadcast app. It include the
 
 ## How to run
 
+I've set up a test server at 139.196.232.10, so you can directly run the iOS project.
+
 #### 1. Nginx RTMP server
 
-You need to set up your own rtmp server, the guidance can be found here: https://github.com/arut/nginx-rtmp-module
+You can set up your own rtmp server, the guidance can be found here: https://github.com/arut/nginx-rtmp-module
 
 
 #### 2. WebSocket server
@@ -33,13 +35,12 @@ In Config.swift, update the server url:
 struct Config {
     static var rtmpPushUrl = "rtmp://139.196.232.10/live/"
     static var rtmpPlayUrl = "rtmp://139.196.232.10/live/"
-    static var serverUrl = "http://172.16.20.24:3000"
+    static var serverUrl = "http://139.196.232.10:3000"
 }
 
 ```
 
 The app can also be run on a simulator, but to broadcast, you need to run it on a real device
-
 
 
 ## Tutorial
