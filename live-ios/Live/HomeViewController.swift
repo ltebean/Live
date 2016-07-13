@@ -81,7 +81,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         let room = rooms[indexPath.row]
-        cell.textLabel!.text = room.key
+        cell.textLabel!.text = "Room: \(room.key)"
         return cell
     }
     

@@ -33,7 +33,7 @@ class BroadcasterViewController: UIViewController, VCSessionDelegate {
         socket.on("connect") {data, ack in
             self.socket.emit("create_room", self.room.key)
         }
-        infoLabel.text = "room: \(room.key)"
+        infoLabel.text = "Room: \(room.key)"
           
     }
     
