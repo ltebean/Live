@@ -92,7 +92,7 @@ You can find the usage of these libs in their project pages.
 
 #### 3. Websocket server
 This project uses socket.io to handle the client-server communication, the logic is very simple, on the server side:
-```node.js
+```js
 var rooms = []
 
 io.on('connection', function(socket) {
