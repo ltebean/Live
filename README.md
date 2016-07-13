@@ -1,8 +1,8 @@
-This is project is to demonstrate how to build a live broadcast app. It include these features:
+This project is to demonstrate how to build a live broadcast app. It include these features:
 
 * create a room to broadcast your live stream
 * join a room to watch the live
-* send upvotes and comments
+* send likes and comments
 
 ![image](https://cloud.githubusercontent.com/assets/1646564/16791969/658d8e66-48f6-11e6-8329-6e9ef7f43e75.png)
 
@@ -33,7 +33,6 @@ Download `IJKMediaFramework.framework` then add it into the project.
 In Config.swift, update the rtmp and websocket server url:
 ```
 struct Config {
-    
     static var rtmpPushUrl = "rtmp://139.196.232.10/live/"
     static var rtmpPlayUrl = "rtmp://139.196.232.10/live/"
     static var serverUrl = "http://172.16.20.24:3000"
