@@ -56,7 +56,7 @@ For the simplest case, we don't need a cdn server, then the flow will be:
 broadcaster -> rtmp -> media server -> rtmp or hls -> audience
 ```
 
-That is, the boadcaster push the live stream using the RTMP protocal to a media server, the audience pull the stream from the server using RTMP or HLS protocal
+That is, the boadcaster push the live stream using the RTMP protocal to a media server, the audience pull the stream from the server using RTMP or HLS protocal.
 
 Some explaination for RTMP and HLS
 * RTMP: RTMP is used to stream audio, video or data and is originally a proprietary protocol introduced by Macromedia (owned by Adobe). The protocol is TCP-based and offers therefore persistent connections. In short, RTMP encapsulates MP3/AAC audio and MP4/FLV video multimedia streams.
@@ -144,7 +144,7 @@ socket.emit("comment", [
 ```
 
 listen likes and comments events:
-```
+```swift
 socket.on("upvote") {data ,ack in
     self.emitterView.emitImage(R.image.heart()!)
 }
