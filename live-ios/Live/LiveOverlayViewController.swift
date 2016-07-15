@@ -16,6 +16,7 @@ class LiveOverlayViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var inputContainer: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var giftArea: GiftDisplayArea!
     
     var comments: [Comment] = []
     var room: Room!
@@ -51,6 +52,11 @@ class LiveOverlayViewController: UIViewController {
             self?.tableView.reloadData()
         }
         
+        socket.on("gift") {[weak self] data ,ack in
+            let event = GiftEvent(dict: data[0] as! [String: AnyObject])
+            self?.giftArea.pushGiftEvent(event)
+        }
+        
     }
     
     
@@ -77,6 +83,16 @@ class LiveOverlayViewController: UIViewController {
         tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: comments.count - 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
     }
 
+    @IBAction func giftButtonPressed(sender: AnyObject) {
+        let vc = R.storyboard.main.giftChooser()!
+        vc.socket = socket
+        vc.room = room
+        vc.modalPresentationStyle = .Custom
+        presentViewController(vc, animated: true, completion: nil)
+        
+    }
+    
+    
     @IBAction func upvoteButtonPressed(sender: AnyObject) {
         socket.emit("upvote", room.key)
     }

@@ -48,6 +48,11 @@ io.on('connection', function(socket) {
     io.to(roomKey).emit('upvote')
   });
 
+  socket.on('gift', function(data) {
+    console.log('gift:', data)
+    io.to(data.roomKey).emit('gift', data)
+  });
+
   socket.on('comment', function(data) {
     console.log('comment:', data)
     io.to(data.roomKey).emit('comment', data)

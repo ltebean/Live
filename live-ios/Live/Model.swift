@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Room: NSObject {
+struct Room {
     
     var key: String
     
@@ -17,7 +17,8 @@ class Room: NSObject {
     }
 }
 
-class Comment: NSObject {
+
+struct Comment {
     
     var text: String
     
@@ -25,3 +26,34 @@ class Comment: NSObject {
         text = dict["text"] as! String
     }
 }
+
+
+struct User {
+    
+    var id = Int(arc4random())
+    
+    static let currentUser = User()
+}
+
+
+class GiftEvent: NSObject {
+    
+    var senderId: Int
+    
+    var giftId: Int
+    
+    var giftCount: Int
+    
+    init(dict: [String: AnyObject]) {
+        senderId = dict["senderId"] as! Int
+        giftId = dict["giftId"] as! Int
+        giftCount = dict["giftCount"] as! Int
+    }
+    
+    func shouldComboWith(event: GiftEvent) -> Bool {
+        return senderId == event.senderId && giftId == event.giftId
+    }
+    
+}
+
+

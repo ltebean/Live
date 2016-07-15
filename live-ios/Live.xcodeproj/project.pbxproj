@@ -38,6 +38,10 @@
 		B3401F711D35E48000ECF1CC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3401F701D35E48000ECF1CC /* Model.swift */; };
 		B3401F731D35F34E00ECF1CC /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3401F721D35F34E00ECF1CC /* TextField.swift */; };
 		B3401F761D3631B300ECF1CC /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3401F751D3631B300ECF1CC /* Config.swift */; };
+		B3401F841D387F8D00ECF1CC /* GiftDisplayArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3401F831D387F8D00ECF1CC /* GiftDisplayArea.swift */; };
+		B3401F861D38800F00ECF1CC /* GiftDisplayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3401F851D38800F00ECF1CC /* GiftDisplayView.xib */; };
+		B3401F881D38801A00ECF1CC /* GiftDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3401F871D38801A00ECF1CC /* GiftDisplayView.swift */; };
+		B3401F8A1D38AA6E00ECF1CC /* GiftChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3401F891D38AA6E00ECF1CC /* GiftChooserViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +81,10 @@
 		B3401F701D35E48000ECF1CC /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		B3401F721D35F34E00ECF1CC /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		B3401F751D3631B300ECF1CC /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		B3401F831D387F8D00ECF1CC /* GiftDisplayArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiftDisplayArea.swift; sourceTree = "<group>"; };
+		B3401F851D38800F00ECF1CC /* GiftDisplayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GiftDisplayView.xib; sourceTree = "<group>"; };
+		B3401F871D38801A00ECF1CC /* GiftDisplayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiftDisplayView.swift; sourceTree = "<group>"; };
+		B3401F891D38AA6E00ECF1CC /* GiftChooserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiftChooserViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,7 +170,6 @@
 				B3401F641D35DCA400ECF1CC /* String.swift */,
 				B3401F651D35DCA400ECF1CC /* UIView.swift */,
 				B3401F4F1D34960700ECF1CC /* DesignableButton.swift */,
-				B3401F571D34C3F100ECF1CC /* WaveEmitterView.swift */,
 				B3401F721D35F34E00ECF1CC /* TextField.swift */,
 			);
 			name = Foundation;
@@ -171,11 +178,13 @@
 		B3401F4E1D3495EB00ECF1CC /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				B3401F821D387E8100ECF1CC /* Component */,
 				B32E392F1D336A5500FA87AB /* Main.storyboard */,
 				B3401F2E1D33901600ECF1CC /* HomeViewController.swift */,
 				B3401F301D33902300ECF1CC /* BroadcasterViewController.swift */,
 				B3401F321D33903100ECF1CC /* AudienceViewController.swift */,
 				B3401F591D34C54100ECF1CC /* LiveOverlayViewController.swift */,
+				B3401F891D38AA6E00ECF1CC /* GiftChooserViewController.swift */,
 				B3401F701D35E48000ECF1CC /* Model.swift */,
 			);
 			name = Home;
@@ -187,6 +196,17 @@
 				B3401F5C1D35DBF900ECF1CC /* Raleway-Regular.ttf */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		B3401F821D387E8100ECF1CC /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				B3401F571D34C3F100ECF1CC /* WaveEmitterView.swift */,
+				B3401F831D387F8D00ECF1CC /* GiftDisplayArea.swift */,
+				B3401F851D38800F00ECF1CC /* GiftDisplayView.xib */,
+				B3401F871D38801A00ECF1CC /* GiftDisplayView.swift */,
+			);
+			name = Component;
 			sourceTree = "<group>";
 		};
 		FAED826B8503214362DF977D /* Pods */ = {
@@ -265,6 +285,7 @@
 				B32E39361D336A5500FA87AB /* LaunchScreen.storyboard in Resources */,
 				B3401F561D34C1A200ECF1CC /* Assets.xcassets in Resources */,
 				B32E39311D336A5500FA87AB /* Main.storyboard in Resources */,
+				B3401F861D38800F00ECF1CC /* GiftDisplayView.xib in Resources */,
 				B3401F5D1D35DBF900ECF1CC /* Raleway-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,9 +376,11 @@
 			files = (
 				B32E392C1D336A5500FA87AB /* AppDelegate.swift in Sources */,
 				B3401F6A1D35DCA400ECF1CC /* String.swift in Sources */,
+				B3401F8A1D38AA6E00ECF1CC /* GiftChooserViewController.swift in Sources */,
 				B3401F6E1D35E22800ECF1CC /* R.generated.swift in Sources */,
 				B3401F331D33903100ECF1CC /* AudienceViewController.swift in Sources */,
 				B3401F761D3631B300ECF1CC /* Config.swift in Sources */,
+				B3401F841D387F8D00ECF1CC /* GiftDisplayArea.swift in Sources */,
 				B3401F2F1D33901600ECF1CC /* HomeViewController.swift in Sources */,
 				B3401F5A1D34C54100ECF1CC /* LiveOverlayViewController.swift in Sources */,
 				B3401F731D35F34E00ECF1CC /* TextField.swift in Sources */,
@@ -365,6 +388,7 @@
 				B3401F711D35E48000ECF1CC /* Model.swift in Sources */,
 				B3401F501D34960700ECF1CC /* DesignableButton.swift in Sources */,
 				B3401F671D35DCA400ECF1CC /* XibBasedView.swift in Sources */,
+				B3401F881D38801A00ECF1CC /* GiftDisplayView.swift in Sources */,
 				B3401F681D35DCA400ECF1CC /* UIColor.swift in Sources */,
 				B3401F691D35DCA400ECF1CC /* UIFont.swift in Sources */,
 				B3401F6B1D35DCA400ECF1CC /* UIView.swift in Sources */,
@@ -484,6 +508,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -493,6 +518,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.ltebean.Live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Live/Live-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -504,6 +530,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -513,6 +540,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.ltebean.Live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Live/Live-Bridging-Header.h";
 			};
 			name = Release;
