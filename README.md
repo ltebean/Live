@@ -1,8 +1,8 @@
 This project is to demonstrate how to build a live broadcast app. It include these features:
 
-* create a room to broadcast your live stream
-* join a room to watch the live
-* send likes and comments
+* Create a room to broadcast your live stream
+* Join a room to watch the live
+* Send likes and comments
 
 ![image](https://cloud.githubusercontent.com/assets/1646564/16791969/658d8e66-48f6-11e6-8329-6e9ef7f43e75.png)
 
@@ -28,7 +28,7 @@ Just go to the `live-server` folder, run `npm install`, then start the server by
 
 #### 3. iOS client
 
-Go the the `live-ios` folder, run `pod install`(must use cocoapods 0.39.0)
+Go to the `live-ios` folder, run `pod install`(must use cocoapods 0.39.0)
 
 In Config.swift, update the server url:
 ```
@@ -40,7 +40,7 @@ struct Config {
 
 ```
 
-The app can also be run on a simulator, but to broadcast, you need to run it on a real device
+The app can also run on a simulator, but to broadcast, you need to run it on a real device.
 
 
 ## Tutorial
@@ -59,7 +59,8 @@ broadcaster -> rtmp -> media server -> rtmp or hls -> audience
 
 That is, the boadcaster push the live stream using the RTMP protocal to a media server, the audience pull the stream from the server using RTMP or HLS protocal.
 
-Some explaination for RTMP and HLS
+Some explaination for RTMP and HLS:
+
 * RTMP: RTMP is used to stream audio, video or data and is originally a proprietary protocol introduced by Macromedia (owned by Adobe). The protocol is TCP-based and offers therefore persistent connections. In short, RTMP encapsulates MP3/AAC audio and MP4/FLV video multimedia streams.
 
 * HLS: HTTP Live Streaming is known as HLS. As the name implies, it is the media streaming communications protocol based on HTTP; developed by Apple as part of their QuickTime, Safari, OS X, and iOS products. How does it work? It breaks the overall stream into a sequence of small HTTP-based files (.ts: Transport Stream). These transport stream files are indexed in the file .m3u8. It is required to download first the .m3u8 playlist to play a live stream.
@@ -70,7 +71,7 @@ For the media server, there are serveral choices:
 * Nginx RTMP module
 * crtmpserver
 
-After setting up the server, you can test it using ffmpeg(install it by `brew install ffmpeg`)
+After setting up the server, you can test it using ffmpeg(install it by `brew install ffmpeg`).
 * push stream
 ```
 ffmpeg -f avfoundation -framerate 30  -i "1:0" -f flv rtmp://server-url
