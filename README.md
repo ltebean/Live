@@ -18,8 +18,10 @@ I've set up a test server at 139.196.232.10, so you can directly run the iOS pro
 
 #### 1. Nginx RTMP server
 
-You can set up your own rtmp server, the guidance can be found here: https://github.com/arut/nginx-rtmp-module
+You can set up your own rtmp server, the guidance can be found here: 
 
+* https://github.com/arut/nginx-rtmp-module
+* https://www.atlantic.net/community/howto/install-rtmp-ubuntu-14-04/
 
 
 #### 2. WebSocket server
