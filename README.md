@@ -2,10 +2,9 @@ This project is to demonstrate how to build a live broadcast app. It include the
 
 * Create a room to broadcast your live stream
 * Join a room to watch the live
-* Send likes and comments
+* Send likes, gifts, and comments
 
-![image](https://cloud.githubusercontent.com/assets/1646564/16791969/658d8e66-48f6-11e6-8329-6e9ef7f43e75.png)
-
+![image](https://cloud.githubusercontent.com/assets/1646564/16791969/658d8e66-48f6-11e6-8329-6e9ef7f43e75.png)&emsp;&emsp;![image](https://cloud.githubusercontent.com/assets/1646564/16864842/bbbdd294-4a92-11e6-905b-9a8be9f3bbb6.png)
 
 ## Introduction
 
@@ -20,6 +19,7 @@ I've set up a test server at 139.196.232.10, so you can directly run the iOS pro
 #### 1. Nginx RTMP server
 
 You can set up your own rtmp server, the guidance can be found here: https://github.com/arut/nginx-rtmp-module
+
 
 
 #### 2. WebSocket server
