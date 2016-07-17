@@ -14,7 +14,7 @@ This project is to demonstrate how to build a live broadcast app. It include the
 
 ## How to run
 
-I've set up a test server at 139.196.232.10, so you can directly run the iOS project.
+I've set up a test server at 139.196.179.230, so you can directly run the iOS project.
 
 #### 1. Nginx RTMP server
 
@@ -35,9 +35,9 @@ Go to the `live-ios` folder, run `pod install`(must use cocoapods 0.39.0)
 In Config.swift, update the server url:
 ```
 struct Config {
-    static var rtmpPushUrl = "rtmp://139.196.232.10/live/"
-    static var rtmpPlayUrl = "rtmp://139.196.232.10/live/"
-    static var serverUrl = "http://139.196.232.10:3000"
+    static var rtmpPushUrl = "rtmp://139.196.179.230/mytv/"
+    static var rtmpPlayUrl = "rtmp://139.196.179.230/mytv/"
+    static var serverUrl = "http://139.196.179.230:3000"
 }
 
 ```
