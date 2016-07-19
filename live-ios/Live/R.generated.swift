@@ -43,7 +43,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 4 images.
+  /// This `R.image` struct is generated, and contains static references to 7 images.
   struct image {
     /// Image `gift-1`.
     static let gift1 = ImageResource(bundle: _R.hostingBundle, name: "gift-1")
@@ -53,6 +53,12 @@ struct R: Rswift.Validatable {
     static let gift3 = ImageResource(bundle: _R.hostingBundle, name: "gift-3")
     /// Image `heart`.
     static let heart = ImageResource(bundle: _R.hostingBundle, name: "heart")
+    /// Image `icon-close`.
+    static let iconClose = ImageResource(bundle: _R.hostingBundle, name: "icon-close")
+    /// Image `icon-gift`.
+    static let iconGift = ImageResource(bundle: _R.hostingBundle, name: "icon-gift")
+    /// Image `icon-like`.
+    static let iconLike = ImageResource(bundle: _R.hostingBundle, name: "icon-like")
     
     /// `UIImage(named: "gift-1", bundle: ..., traitCollection: ...)`
     static func gift1(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
@@ -72,6 +78,21 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "heart", bundle: ..., traitCollection: ...)`
     static func heart(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.heart, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon-close", bundle: ..., traitCollection: ...)`
+    static func iconClose(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.iconClose, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon-gift", bundle: ..., traitCollection: ...)`
+    static func iconGift(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.iconGift, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon-like", bundle: ..., traitCollection: ...)`
+    static func iconLike(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.iconLike, compatibleWithTraitCollection: traitCollection)
     }
     
     private init() {}
@@ -226,8 +247,11 @@ struct _R: Rswift.Validatable {
       
       static func validate() throws {
         if UIImage(named: "gift-3") == nil { throw ValidationError(description: "[R.swift] Image named 'gift-3' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "gift-1") == nil { throw ValidationError(description: "[R.swift] Image named 'gift-1' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "gift-2") == nil { throw ValidationError(description: "[R.swift] Image named 'gift-2' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "icon-gift") == nil { throw ValidationError(description: "[R.swift] Image named 'icon-gift' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "icon-like") == nil { throw ValidationError(description: "[R.swift] Image named 'icon-like' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "gift-1") == nil { throw ValidationError(description: "[R.swift] Image named 'gift-1' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "icon-close") == nil { throw ValidationError(description: "[R.swift] Image named 'icon-close' is used in storyboard 'Main', but couldn't be loaded.") }
         if _R.storyboard.main().broadcast() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'broadcast' could not be loaded from storyboard 'Main' as 'BroadcasterViewController'.") }
         if _R.storyboard.main().audience() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'audience' could not be loaded from storyboard 'Main' as 'AudienceViewController'.") }
         if _R.storyboard.main().giftChooser() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'giftChooser' could not be loaded from storyboard 'Main' as 'GiftChooserViewController'.") }

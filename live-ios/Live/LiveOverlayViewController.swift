@@ -26,16 +26,12 @@ class LiveOverlayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        textField.layer.borderWidth = 0.5
-        textField.layer.cornerRadius = 5
-        textField.layer.borderColor = UIColor.whiteColor().CGColor
-        
+      
         textField.delegate = self
         
         tableView.dataSource = self
         tableView.delegate = self
         
-        IHKeyboardAvoiding.setAvoidingView(inputContainer)
         
         NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(LiveOverlayViewController.tick(_:)), userInfo: nil, repeats: true)
         
@@ -56,7 +52,6 @@ class LiveOverlayViewController: UIViewController {
             let event = GiftEvent(dict: data[0] as! [String: AnyObject])
             self?.giftArea.pushGiftEvent(event)
         }
-        
     }
     
     

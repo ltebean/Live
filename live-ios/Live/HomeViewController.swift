@@ -45,9 +45,9 @@ class HomeViewController: UIViewController {
                 return
             }
             SVProgressHUD.dismiss()
-            let roomKeys = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions()) as! [String]
-            self.rooms = roomKeys.map {
-                Room(dict: ["key": $0])
+            let rooms = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions()) as! [[String: AnyObject]]
+            self.rooms = rooms.map {
+                Room(dict: $0)
             }
             self.tableView.reloadData()
         })
@@ -55,7 +55,6 @@ class HomeViewController: UIViewController {
     
     func createRoom() {
         let vc = R.storyboard.main.broadcast()!
-        vc.room = Room(dict: ["key": String.random()])
         presentViewController(vc, animated: true, completion: nil)
     }
     
@@ -81,7 +80,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         let room = rooms[indexPath.row]
-        cell.textLabel!.text = "Room: \(room.key)"
+        cell.textLabel!.text = "Room: \(room.title != "" ? room.title : room.key)"
         return cell
     }
     

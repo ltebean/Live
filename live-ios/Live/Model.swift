@@ -11,9 +11,18 @@ import Foundation
 struct Room {
     
     var key: String
+    var title: String
     
     init(dict: [String: AnyObject]) {
+        title = dict["title"] as! String
         key = dict["key"] as! String
+    }
+    
+    func toDict() -> [String: AnyObject] {
+        return [
+            "title": title,
+            "key": key
+        ]
     }
 }
 

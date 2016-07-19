@@ -9,6 +9,7 @@
 import UIKit
 import VideoCore
 import SocketIOClientSwift
+import IHKeyboardAvoiding
 
 class BroadcasterViewController: UIViewController, VCSessionDelegate {
         
@@ -16,11 +17,15 @@ class BroadcasterViewController: UIViewController, VCSessionDelegate {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
     
+    @IBOutlet weak var titleTextField: TextField!
+    @IBOutlet weak var inputTitleOverlay: UIVisualEffectView!
+    @IBOutlet weak var inputContainer: UIView!
+    
+    
     let socket = SocketIOClient(socketURL: NSURL(string: Config.serverUrl)!, options: [.Log(true), .ForceWebsockets(true)])
 
     let session = VCSimpleSession(videoSize: CGSize(width: 720, height: 1280), frameRate: 20, bitrate: 1000000, useInterfaceOrientation: false)
     var room: Room!
-    var created = false
     
     var overlayController: LiveOverlayViewController!
 
@@ -31,47 +36,58 @@ class BroadcasterViewController: UIViewController, VCSessionDelegate {
         session.previewView.frame = previewView.bounds
         session.delegate = self
         
-        socket.on("connect") {[weak self] data, ack in
-            self?.createRoom()
-        }
-        infoLabel.text = "Room: \(room.key)"
-        
+        IHKeyboardAvoiding.setAvoidingView(inputContainer)
     }
     
-    func createRoom() {
-        if created {
-            return
-        }
-        created = true
-        socket.emit("create_room", room.key)
-    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        socket.connect()
-        session.startRtmpSessionWithURL(Config.rtmpPushUrl, andStreamKey: room.key)
     }
+    
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        socket.emitWithAck("close_room", room.key)(timeoutAfter: 0) { data in
-            self.socket.disconnect()
-        }
-        
-        session.endRtmpSession()
-
+        stop()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "overlay" {
             overlayController = segue.destinationViewController as! LiveOverlayViewController
             overlayController.socket = socket
-            overlayController.room = room
         }
     }
 
+    func start() {
+        room = Room(dict: [
+            "title": titleTextField.text!,
+            "key": String.random()
+        ])
+        
+        overlayController.room = room
+        
+        session.startRtmpSessionWithURL(Config.rtmpPushUrl, andStreamKey: room.key)
+        
+        socket.connect()
+        socket.on("connect") {[weak self] data, ack in
+            guard let this = self else {
+                return
+            }
+            this.socket.emit("create_room", this.room.toDict())
+        }
+        
+        infoLabel.text = "Room: \(room.key)"
+        IHKeyboardAvoiding.setAvoidingView(overlayController.inputContainer)
+    }
     
+    func stop() {
+        guard room != nil else {
+            return
+        }
+        socket.emitWithAck("close_room", room.key)(timeoutAfter: 0) { data in
+            self.socket.disconnect()
+        }
+        session.endRtmpSession()
+    }
         
     func connectionStatusChanged(sessionState: VCSessionState) {
         switch session.rtmpSessionState {
@@ -89,8 +105,23 @@ class BroadcasterViewController: UIViewController, VCSessionDelegate {
             statusLabel.text = "None"
         }
     }
+    
+    
+    @IBAction func startButtonPressed(sender: AnyObject) {
+        titleTextField.resignFirstResponder()
+        start()
+        UIView.animateWithDuration(0.2, animations: {
+            self.inputTitleOverlay.alpha = 0
+        }, completion: { finished in
+            self.inputTitleOverlay.hidden = true
+        })
+    }
         
     @IBAction func closeButtonPressed(sender: AnyObject) {
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
 }

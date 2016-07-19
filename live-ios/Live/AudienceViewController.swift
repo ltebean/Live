@@ -9,6 +9,7 @@
 
 import UIKit
 import SocketIOClientSwift
+import IHKeyboardAvoiding
 
 class AudienceViewController: UIViewController {
 
@@ -32,6 +33,7 @@ class AudienceViewController: UIViewController {
         player.view.frame = previewView.bounds
         previewView.addSubview(player.view)
         
+
         player.prepareToPlay()
         
         socket.on("connect") {[weak self] data, ack in
@@ -86,5 +88,9 @@ class AudienceViewController: UIViewController {
     
     @IBAction func closeButtonPressed(sender: AnyObject) {
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
 }

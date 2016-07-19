@@ -45,5 +45,7 @@
 	<array>
 		<string>Raleway-Regular.ttf</string>
 	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
 </dict>
 </plist>

@@ -37,4 +37,8 @@ class GiftChooserViewController: UIViewController {
             "giftCount": 1
         ])
     }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
 }
