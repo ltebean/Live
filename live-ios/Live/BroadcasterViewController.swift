@@ -34,7 +34,6 @@ class BroadcasterViewController: UIViewController, VCSessionDelegate {
             // Do any additional setup after loading the view, typically from a nib.
         previewView.addSubview(session.previewView)
         session.previewView.frame = previewView.bounds
-        session.delegate = self
         
         IHKeyboardAvoiding.setAvoidingView(inputContainer)
     }
@@ -42,11 +41,13 @@ class BroadcasterViewController: UIViewController, VCSessionDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        session.delegate = self
     }
     
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
+        session.delegate = nil
         stop()
     }
     
@@ -88,8 +89,9 @@ class BroadcasterViewController: UIViewController, VCSessionDelegate {
         }
         session.endRtmpSession()
     }
-        
+    
     func connectionStatusChanged(sessionState: VCSessionState) {
+        
         switch session.rtmpSessionState {
         case .Starting:
             statusLabel.text = "Starting"
