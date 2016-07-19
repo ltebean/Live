@@ -4,7 +4,7 @@ This project is to demonstrate how to build a live broadcast app. It include the
 * Join a room to watch the live
 * Send likes, gifts, and comments
 
-![image](https://cloud.githubusercontent.com/assets/1646564/16791969/658d8e66-48f6-11e6-8329-6e9ef7f43e75.png)&emsp;&emsp;![image](https://cloud.githubusercontent.com/assets/1646564/16864842/bbbdd294-4a92-11e6-905b-9a8be9f3bbb6.png)
+![image](https://cloud.githubusercontent.com/assets/1646564/16943747/de7a0c36-4dcf-11e6-913f-103301ef8fda.png)&emsp;&emsp;![image](https://cloud.githubusercontent.com/assets/1646564/16943754/e1d036ee-4dcf-11e6-8994-cc2cf1709bb8.png)
 
 ## Introduction
 
@@ -96,38 +96,40 @@ You can find the usage of these libs in their project pages.
 #### 3. Websocket server
 This project uses socket.io to handle the client-server communication, the logic is very simple, on the server side:
 ```js
-var rooms = []
+var rooms = {}
 
 io.on('connection', function(socket) {
 
-  socket.on('create_room', function(roomKey) {
-    rooms.push(roomKey)
-    socket.roomKey = roomKey;
-    socket.join(roomKey);
-  });
+  socket.on('create_room', function(room) {
+    var roomKey = room.key
+    rooms[roomKey] = room
+    socket.roomKey = roomKey
+    socket.join(roomKey)
+  })
 
   socket.on('close_room', function(roomKey) {
-    closeRoom(roomKey)
-  });
+    delete rooms[roomKey]
+  })
 
   socket.on('disconnect', function(roomKey) {
     if (socket.roomKey) {
-      closeRoom(socket.roomKey)
+      delete rooms[roomKey]
     }
-  });
+  })
 
   socket.on('join_room', function(roomKey) {
-    socket.join(roomKey);
-  });
+    socket.join(roomKey)
+  })
 
   socket.on('upvote', function(roomKey) {
     io.to(roomKey).emit('upvote')
-  });
+  })
 
-  socket.on('comment', function(data) {
-    io.to(data.roomKey).emit('comment', data)
-  });
-});
+  socket.on('gift', function(data) {
+    io.to(data.roomKey).emit('gift', data)
+  })
+  
+})
 
 ```
 
@@ -136,7 +138,7 @@ On the client side, it uses the socket.io swift client(https://github.com/socket
 create, join, or close a room:
 ```swift
 socket.on("connect") {data, ack in
-    self.socket.emit("create_room", self.room.key)
+    self.socket.emit("create_room", self.room)
 }
 
 socket.on("connect") {data, ack in
