@@ -16,6 +16,9 @@ var rooms = {}
 io.on('connection', function(socket) {
 
   socket.on('create_room', function(room) {
+    if (!room.key) {
+      return
+    }
     console.log('create room:', room)
     var roomKey = room.key
     rooms[roomKey] = room
