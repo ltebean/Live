@@ -38,6 +38,8 @@ class LiveOverlayViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(LiveOverlayViewController.handleTap(_:)))
         view.addGestureRecognizer(tap)
         
+        IHKeyboardAvoiding.setAvoidingView(inputContainer)
+
         socket.on("upvote") {[weak self] data ,ack in
             self?.emitterView.emitImage(R.image.heart()!)
         }
