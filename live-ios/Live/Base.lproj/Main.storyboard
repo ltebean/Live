@@ -398,10 +398,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="buS-w1-Cb7">
-                                                    <rect key="frame" x="0.0" y="5" width="160" height="60"/>
+                                                    <rect key="frame" x="0.0" y="5" width="45" height="60"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="47u-Zd-lMP">
-                                                            <rect key="frame" x="6" y="6" width="148" height="48"/>
+                                                            <rect key="frame" x="6" y="6" width="33" height="48"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -422,7 +422,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="buS-w1-Cb7" secondAttribute="bottom" constant="5" id="hqr-Nu-9Yg"/>
                                                 <constraint firstItem="buS-w1-Cb7" firstAttribute="top" secondItem="QSi-P9-YWA" secondAttribute="top" constant="5" id="mbZ-Bc-gxG"/>
                                                 <constraint firstItem="buS-w1-Cb7" firstAttribute="leading" secondItem="QSi-P9-YWA" secondAttribute="leading" id="moW-D5-EZv"/>
-                                                <constraint firstAttribute="trailing" secondItem="buS-w1-Cb7" secondAttribute="trailing" id="te1-se-RD3"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="buS-w1-Cb7" secondAttribute="trailing" id="te1-se-RD3"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

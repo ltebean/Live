@@ -31,6 +31,9 @@ class LiveOverlayViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.estimatedRowHeight = 30
+        tableView.rowHeight = UITableViewAutomaticDimension
+
         
         
         NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(LiveOverlayViewController.tick(_:)), userInfo: nil, repeats: true)
@@ -129,9 +132,6 @@ extension LiveOverlayViewController: UITableViewDataSource, UITableViewDelegate 
         return cell
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return CommentCell.heightForComment(comments[indexPath.row])
-    }
 }
 
 
@@ -156,7 +156,4 @@ class CommentCell: UITableViewCell {
         titleLabel.attributedText = comment.text.attributedComment()
     }
     
-    static func heightForComment(comment: Comment) -> CGFloat {
-        return comment.text.attributedComment().heightWithConstrainedWidth(160 - 2 * 6) + (5 + 6) * 2
-    }
 }
