@@ -27,12 +27,14 @@ io.on('connection', function(socket) {
   })
 
   socket.on('close_room', function(roomKey) {
+    console.log('close room:', roomKey)
     delete rooms[roomKey]
   })
 
-  socket.on('disconnect', function(roomKey) {
+  socket.on('disconnect', function() {
+    console.log('disconnect:', socket.roomKey)
     if (socket.roomKey) {
-      delete rooms[roomKey]
+      delete rooms[socket.roomKey]
     }
   })
 

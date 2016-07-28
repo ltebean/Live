@@ -137,17 +137,15 @@ On the client side, it uses the socket.io swift client(https://github.com/socket
 
 create, join, or close a room:
 ```swift
-socket.on("connect") {data, ack in
+socket.on("connect") { data, ack in
     self.socket.emit("create_room", self.room)
 }
 
-socket.on("connect") {data, ack in
+socket.on("connect") { data, ack in
     self.socket.emit("join_room", self.room.key)
 }
 
-socket.emitWithAck("close_room", room.key)(timeoutAfter: 0) {data in
-    self.socket.disconnect()
-}
+socket.disconnect()
 ```
 
 publish likes and comments events:
@@ -161,11 +159,11 @@ socket.emit("comment", [
 
 listen likes and comments events:
 ```swift
-socket.on("upvote") {data ,ack in
+socket.on("upvote") { data, ack in
     self.emitterView.emitImage(R.image.heart()!)
 }
         
-socket.on("comment") {data ,ack in
+socket.on("comment") { data, ack in
     let comment = Comment(dict: data[0] as! [String: AnyObject])
     self.comments.append(comment)
     self.tableView.reloadData()

@@ -10,6 +10,7 @@ import UIKit
 import VideoCore
 import SocketIOClientSwift
 import IHKeyboardAvoiding
+import SVProgressHUD
 
 class BroadcasterViewController: UIViewController, VCSessionDelegate {
         
@@ -48,7 +49,6 @@ class BroadcasterViewController: UIViewController, VCSessionDelegate {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         session.delegate = nil
-        stop()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -69,7 +69,7 @@ class BroadcasterViewController: UIViewController, VCSessionDelegate {
         session.startRtmpSessionWithURL(Config.rtmpPushUrl, andStreamKey: room.key)
         
         socket.connect()
-        socket.on("connect") {[weak self] data, ack in
+        socket.once("connect") {[weak self] data, ack in
             guard let this = self else {
                 return
             }
@@ -84,10 +84,8 @@ class BroadcasterViewController: UIViewController, VCSessionDelegate {
         guard room != nil else {
             return
         }
-        socket.emitWithAck("close_room", room.key)(timeoutAfter: 0) { data in
-            self.socket.disconnect()
-        }
         session.endRtmpSession()
+        socket.disconnect()
     }
     
     func connectionStatusChanged(sessionState: VCSessionState) {
@@ -120,6 +118,7 @@ class BroadcasterViewController: UIViewController, VCSessionDelegate {
     }
         
     @IBAction func closeButtonPressed(sender: AnyObject) {
+        stop()
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     

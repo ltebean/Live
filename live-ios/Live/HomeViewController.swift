@@ -23,8 +23,8 @@ class HomeViewController: UIViewController {
         tableView.tableFooterView = UIView()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         refresh()
     }
     
@@ -63,7 +63,6 @@ class HomeViewController: UIViewController {
         vc.room = room
         presentViewController(vc, animated: true, completion: nil)
     }
-    
     
 }
 
