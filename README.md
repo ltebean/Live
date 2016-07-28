@@ -111,9 +111,9 @@ io.on('connection', function(socket) {
     delete rooms[roomKey]
   })
 
-  socket.on('disconnect', function(roomKey) {
+  socket.on('disconnect', function() {
     if (socket.roomKey) {
-      delete rooms[roomKey]
+      delete rooms[socket.roomKey]
     }
   })
 
