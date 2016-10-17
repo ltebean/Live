@@ -14,11 +14,10 @@ This project is to demonstrate how to build a live broadcast app. It include the
 
 ## How to run
 
-I've set up a test server at 139.196.179.230, so you can directly run the iOS project.
 
 #### 1. Nginx RTMP server
 
-You can set up your own rtmp server, the guidance can be found here: 
+You need to can set up your own rtmp server, the guidance can be found here: 
 
 * https://github.com/arut/nginx-rtmp-module
 * https://www.atlantic.net/community/howto/install-rtmp-ubuntu-14-04/
