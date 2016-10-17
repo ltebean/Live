@@ -10,7 +10,7 @@ This project is to demonstrate how to build a live broadcast app. It include the
 
 * RTMP server - Nginx RTMP module(https://github.com/arut/nginx-rtmp-module)
 * WebSocket server - Socket.io(http://socket.io/)
-* iOS client - VideoCore(https://github.com/jgh-/VideoCore) to push stream, IJKPlayer(https://github.com/Bilibili/ijkplayer) to play stream
+* iOS client - LFLiveKit(https://github.com/LaiFengiOS/LFLiveKit) to push stream, IJKPlayer(https://github.com/Bilibili/ijkplayer) to play stream
 
 ## How to run
 
@@ -87,7 +87,7 @@ p.s. Lots of live stream cloud already covers the media server and cdn parts. Yo
 
 #### 2. iOS RTMP libs
 There are serveral open source projects supporting RTMP, this project uses:
-* VideoCore(https://github.com/jgh-/VideoCore) to push rtmp stream
+* LFLiveKit(https://github.com/LaiFengiOS/LFLiveKit) to push rtmp stream
 * IJKPlayer(https://github.com/Bilibili/ijkplayer) to pull rtmp stream
 
 You can find the usage of these libs in their project pages.
