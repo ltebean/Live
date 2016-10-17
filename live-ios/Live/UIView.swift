@@ -12,7 +12,7 @@ extension UIView {
     
     var scale: CGFloat {
         set(value) {
-            transform = CGAffineTransformMakeScale(value, value)
+            transform = CGAffineTransform(scaleX: value, y: value)
         }
         get {
             return 0

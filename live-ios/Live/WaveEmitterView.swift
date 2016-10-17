@@ -8,15 +8,15 @@
 
 
 
-public class WaveEmitterView : UIView {
+open class WaveEmitterView : UIView {
     
-    public var amplitudeRange = 3
-    public var amplitude = 12
+    open var amplitudeRange = 3
+    open var amplitude = 12
     
-    public var duration: CFTimeInterval = 4
-    public var durationRange: CFTimeInterval = 1
+    open var duration: CFTimeInterval = 4
+    open var durationRange: CFTimeInterval = 1
     
-    public var maximumCount = 100
+    open var maximumCount = 100
     
     var currentCount = 0
     var unusedLayers: [CALayer] = []
@@ -35,9 +35,9 @@ public class WaveEmitterView : UIView {
         
     }
     
-    func getPathInRect(rect: CGRect) -> UIBezierPath {
-        let centerX = CGRectGetMidX(rect);
-        let height = CGRectGetHeight(rect);
+    func getPathInRect(_ rect: CGRect) -> UIBezierPath {
+        let centerX = rect.midX;
+        let height = rect.height;
         let path = UIBezierPath();
         let offset = Float(arc4random() % 1000);
         let finalAmplitude = amplitude + Int(arc4random()) % amplitudeRange * 2 - amplitudeRange;
@@ -47,22 +47,22 @@ public class WaveEmitterView : UIView {
             let x = Float(finalAmplitude) * sinf((Float(y) + offset) * Float(M_PI) / 180);
             if y == height {
                 delta = CGFloat(x)
-                path.moveToPoint(CGPoint(x:centerX, y: y))
+                path.move(to: CGPoint(x:centerX, y: y))
             } else {
-                path.addLineToPoint(CGPoint(x:CGFloat(x) + centerX - delta, y: y))
+                path.addLine(to: CGPoint(x:CGFloat(x) + centerX - delta, y: y))
             }
             y = y - 1
         }
         return path
     }
     
-    public func emitImage(image: UIImage) {
+    open func emitImage(_ image: UIImage) {
         guard currentCount < maximumCount else {
             return
         }
         currentCount = currentCount + 1
         
-        let height = CGRectGetHeight(bounds)
+        let height = bounds.height
         let percent = Double(arc4random() % 100) / 100.0
         let duration = self.duration + percent * durationRange * 2 - durationRange
         var layer: CALayer
@@ -72,10 +72,10 @@ public class WaveEmitterView : UIView {
         } else {
             layer = CALayer();
         }
-        layer.contents = image.CGImage
+        layer.contents = image.cgImage
         layer.opacity = 1;
-        layer.frame = CGRectMake(0, 0, image.size.width, image.size.height)
-        layer.position = CGPointMake(CGRectGetMidX(self.bounds), height)
+        layer.frame = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
+        layer.position = CGPoint(x: self.bounds.midX, y: height)
         self.layer.addSublayer(layer)
         
         CATransaction.begin()
@@ -86,19 +86,19 @@ public class WaveEmitterView : UIView {
         }
         
         let position = CAKeyframeAnimation(keyPath: "position")
-        position.path = getPathInRect(bounds).CGPath
+        position.path = getPathInRect(bounds).cgPath
         position.duration = duration
-        layer.addAnimation(position, forKey: "position")
+        layer.add(position, forKey: "position")
         
         let delay = duration / 2;
         let opacity = CABasicAnimation(keyPath: "opacity")
         opacity.fromValue = 1
         opacity.toValue = 0
         opacity.beginTime = CACurrentMediaTime() + delay
-        opacity.removedOnCompletion = false
+        opacity.isRemovedOnCompletion = false
         opacity.fillMode = kCAFillModeForwards
         opacity.duration = duration - delay - 0.1
-        layer.addAnimation(opacity, forKey: "opacity")
+        layer.add(opacity, forKey: "opacity")
         
         CATransaction.commit()
     }

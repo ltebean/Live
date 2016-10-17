@@ -1,67 +1,30 @@
 PODS:
-  - boost (1.51.0):
-    - boost/graph-includes (= 1.51.0)
-    - boost/math-includes (= 1.51.0)
-    - boost/numeric-includes (= 1.51.0)
-    - boost/pointer_cast-includes (= 1.51.0)
-    - boost/preprocessor-includes (= 1.51.0)
-    - boost/shared_ptr-includes (= 1.51.0)
-    - boost/string_algorithms-includes (= 1.51.0)
-  - boost/graph-includes (1.51.0)
-  - boost/math-includes (1.51.0)
-  - boost/numeric-includes (1.51.0)
-  - boost/pointer_cast-includes (1.51.0)
-  - boost/preprocessor-includes (1.51.0)
-  - boost/shared_ptr-includes (1.51.0)
-  - boost/string_algorithms-includes (1.51.0)
-  - glm (0.9.7.1)
   - IHKeyboardAvoiding (2.6)
-  - R.swift (2.4.0):
-    - R.swift.Library (~> 2.2.0)
-  - R.swift.Library (2.2.0)
-  - Socket.IO-Client-Swift (6.1.4)
+  - LFLiveKit (2.3)
+  - R.swift (3.1.0):
+    - R.swift.Library (~> 3.0.2)
+  - R.swift.Library (3.0.2)
+  - Socket.IO-Client-Swift (8.0.2)
   - SVProgressHUD (2.0.3)
-  - TextAttributes (0.3.1)
-  - UriParser-cpp (0.1.3)
-  - VideoCore/Swift (0.3.2):
-    - boost (~> 1.51.0)
-    - glm (~> 0.9.7.1)
-    - UriParser-cpp (~> 0.1.3)
+  - TextAttributes (1.0)
 
 DEPENDENCIES:
-  - glm (from `https://github.com/maxcampolo/glm.git`)
   - IHKeyboardAvoiding
+  - LFLiveKit
   - R.swift
   - Socket.IO-Client-Swift
   - SVProgressHUD
   - TextAttributes
-  - VideoCore/Swift (from `https://github.com/maxcampolo/VideoCore.git`, branch `update_headers`)
-
-EXTERNAL SOURCES:
-  glm:
-    :git: https://github.com/maxcampolo/glm.git
-  VideoCore:
-    :branch: update_headers
-    :git: https://github.com/maxcampolo/VideoCore.git
-
-CHECKOUT OPTIONS:
-  glm:
-    :commit: 2cfe1129de430e4b23e811c5e0800989283af224
-    :git: https://github.com/maxcampolo/glm.git
-  VideoCore:
-    :commit: 44d54cc477fc1aee3c9b498363d1b2937e97d69b
-    :git: https://github.com/maxcampolo/VideoCore.git
 
 SPEC CHECKSUMS:
-  boost: 6c5c8d8daef26ac83c1e1c00ad14de62b80161d7
-  glm: e83c95e7a6359bdaeb23e6089ac826dd62c5c09f
   IHKeyboardAvoiding: d2541ee56dad83e160cd9aed0468c52247af6f49
-  R.swift: 0ef9c42dc6c94ac44a3c78a7639c73f855a8e159
-  R.swift.Library: 31a487b65381f37a7d203a6f1f935b43c9be35b0
-  Socket.IO-Client-Swift: 79dfbbe170d7816c84e2d3cc2baa3d227549e067
+  LFLiveKit: 76a5cb34509f8cbe25e3a95824cf80f36d36679b
+  R.swift: 14400e5784224d1e4e59a8fc5549198c7e8fe360
+  R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
+  Socket.IO-Client-Swift: 136598e4a81a42b0e6855e7f94a0e5a6efdc5ff8
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
-  TextAttributes: b43233c6356a72f1c1e483d5bda694535432a4be
-  UriParser-cpp: cbbe00080ee432ec4833dca863a7fc83adc9b01a
-  VideoCore: 5d8ea99d900089ee016bb87485912b0286e07650
+  TextAttributes: 45b2713a1d174c377d320b51129c304eac381638
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: c5c84a0ddeb5fff48317d745cc13e837ec70ec7c
+
+COCOAPODS: 1.1.0.rc.2

@@ -7,12 +7,12 @@
 //
 
 import UIKit
-import VideoCore
-import SocketIOClientSwift
+import SocketIO
+import LFLiveKit
 import IHKeyboardAvoiding
 import SVProgressHUD
 
-class BroadcasterViewController: UIViewController, VCSessionDelegate {
+class BroadcasterViewController: UIViewController {
         
     @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var statusLabel: UILabel!
@@ -23,9 +23,19 @@ class BroadcasterViewController: UIViewController, VCSessionDelegate {
     @IBOutlet weak var inputContainer: UIView!
     
     
-    let socket = SocketIOClient(socketURL: NSURL(string: Config.serverUrl)!, options: [.Log(true), .ForceWebsockets(true)])
+    let socket = SocketIOClient(socketURL: URL(string: Config.serverUrl)!, config: [.log(true), .forceWebsockets(true)])
 
-    let session = VCSimpleSession(videoSize: CGSize(width: 720, height: 1280), frameRate: 20, bitrate: 1000000, useInterfaceOrientation: false)
+    lazy var session: LFLiveSession = {
+        let audioConfiguration = LFLiveAudioConfiguration.default()
+        let videoConfiguration = LFLiveVideoConfiguration.defaultConfiguration(for: .medium3)
+        
+        let session = LFLiveSession(audioConfiguration: audioConfiguration, videoConfiguration: videoConfiguration)!
+        session.delegate = self
+        session.captureDevicePosition = .back
+        session.preView = self.previewView
+        return session
+    }()
+    
     var room: Room!
     
     var overlayController: LiveOverlayViewController!
@@ -33,40 +43,40 @@ class BroadcasterViewController: UIViewController, VCSessionDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
             // Do any additional setup after loading the view, typically from a nib.
-        previewView.addSubview(session.previewView)
-        session.previewView.frame = previewView.bounds
-        
-        IHKeyboardAvoiding.setAvoidingView(inputContainer)
+        IHKeyboardAvoiding.setAvoiding(inputContainer)
     }
     
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        session.delegate = self
+        session.running = true
     }
     
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        session.delegate = nil
+        session.running = false
+        stop()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "overlay" {
-            overlayController = segue.destinationViewController as! LiveOverlayViewController
+            overlayController = segue.destination as! LiveOverlayViewController
             overlayController.socket = socket
         }
     }
 
     func start() {
         room = Room(dict: [
-            "title": titleTextField.text!,
-            "key": String.random()
+            "title": titleTextField.text! as AnyObject,
+            "key": String.random() as AnyObject
         ])
         
         overlayController.room = room
         
-        session.startRtmpSessionWithURL(Config.rtmpPushUrl, andStreamKey: room.key)
+        let stream = LFLiveStreamInfo()
+        stream.url = "\(Config.rtmpPushUrl)\(room.key)"
+        session.startLive(stream)
         
         socket.connect()
         socket.once("connect") {[weak self] data, ack in
@@ -77,52 +87,60 @@ class BroadcasterViewController: UIViewController, VCSessionDelegate {
         }
         
         infoLabel.text = "Room: \(room.key)"
-        IHKeyboardAvoiding.setAvoidingView(overlayController.inputContainer)
+        IHKeyboardAvoiding.setAvoiding(overlayController.inputContainer)
     }
     
     func stop() {
         guard room != nil else {
             return
         }
-        session.endRtmpSession()
+        session.stopLive()
         socket.disconnect()
     }
     
-    func connectionStatusChanged(sessionState: VCSessionState) {
-        
-        switch session.rtmpSessionState {
-        case .Starting:
-            statusLabel.text = "Starting"
-        case .Started:
-            statusLabel.text = "Started"
-        case .Ended:
-            statusLabel.text = "Ended"
-        case .Error:
-            statusLabel.text = "Error"
-        case .PreviewStarted:
-            statusLabel.text = "PreviewStarted"
-        case .None:
-            statusLabel.text = "None"
-        }
-    }
-    
-    
-    @IBAction func startButtonPressed(sender: AnyObject) {
+    @IBAction func startButtonPressed(_ sender: AnyObject) {
         titleTextField.resignFirstResponder()
         start()
-        UIView.animateWithDuration(0.2, animations: {
+        UIView.animate(withDuration: 0.2, animations: {
             self.inputTitleOverlay.alpha = 0
         }, completion: { finished in
-            self.inputTitleOverlay.hidden = true
+            self.inputTitleOverlay.isHidden = true
         })
     }
         
-    @IBAction func closeButtonPressed(sender: AnyObject) {
-        stop()
-        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func closeButtonPressed(_ sender: AnyObject) {
+        presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 }
+
+extension BroadcasterViewController: LFLiveSessionDelegate {
+    
+    func liveSession(_ session: LFLiveSession?, liveStateDidChange state: LFLiveState) {
+        switch state {
+        case .error:
+            statusLabel.text = "error"
+        case .pending:
+            statusLabel.text = "pending"
+        case .ready:
+            statusLabel.text = "ready"
+        case.start:
+            statusLabel.text = "start"
+        case.stop:
+            statusLabel.text = "stop"
+        }
+    }
+    
+    func liveSession(_ session: LFLiveSession?, debugInfo: LFLiveDebug?) {
+        
+    }
+    
+    func liveSession(_ session: LFLiveSession?, errorCode: LFLiveSocketErrorCode) {
+        print("error: \(errorCode)")
+        
+    }
+}
+

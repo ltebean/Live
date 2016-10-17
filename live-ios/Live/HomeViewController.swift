@@ -23,29 +23,29 @@ class HomeViewController: UIViewController {
         tableView.tableFooterView = UIView()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         refresh()
     }
     
-    @IBAction func newButtonPressed(sender: AnyObject) {
+    @IBAction func newButtonPressed(_ sender: AnyObject) {
         createRoom()
     }
     
-    @IBAction func refreshButtonPressed(sender: AnyObject) {
+    @IBAction func refreshButtonPressed(_ sender: AnyObject) {
         refresh()
     }
     
     func refresh() {
         SVProgressHUD.show()
-        let request = NSURLRequest(URL: NSURL(string: "\(Config.serverUrl)/rooms")!)
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: { resp, data, err in
+        let request = URLRequest(url: URL(string: "\(Config.serverUrl)/rooms")!)
+        NSURLConnection.sendAsynchronousRequest(request, queue: OperationQueue.main, completionHandler: { resp, data, err in
             guard err == nil else {
-                SVProgressHUD.showErrorWithStatus("Error")
+                SVProgressHUD.showError(withStatus: "Error")
                 return
             }
             SVProgressHUD.dismiss()
-            let rooms = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions()) as! [[String: AnyObject]]
+            let rooms = try! JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions()) as! [[String: AnyObject]]
             self.rooms = rooms.map {
                 Room(dict: $0)
             }
@@ -55,36 +55,36 @@ class HomeViewController: UIViewController {
     
     func createRoom() {
         let vc = R.storyboard.main.broadcast()!
-        presentViewController(vc, animated: true, completion: nil)
+        present(vc, animated: true, completion: nil)
     }
     
-    func joinRoom(room: Room) {
+    func joinRoom(_ room: Room) {
         let vc = R.storyboard.main.audience()!
         vc.room = room
-        presentViewController(vc, animated: true, completion: nil)
+        present(vc, animated: true, completion: nil)
     }
     
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rooms.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        let room = rooms[indexPath.row]
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let room = rooms[(indexPath as NSIndexPath).row]
         cell.textLabel!.text = "Room: \(room.title != "" ? room.title : room.key)"
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let room = rooms[indexPath.row]
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let room = rooms[(indexPath as NSIndexPath).row]
         joinRoom(room)
     }
     

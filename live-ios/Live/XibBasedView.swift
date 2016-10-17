@@ -8,9 +8,9 @@
 
 import UIKit
 
-public class XibBasedView: UIView {
+open class XibBasedView: UIView {
     
-    public var contentView: UIView!
+    open var contentView: UIView!
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,14 +22,14 @@ public class XibBasedView: UIView {
         self.load()
     }
     
-    public func load() {
-        let bundle = NSBundle(forClass: self.dynamicType)
-        let nib = UINib(nibName: NSStringFromClass(self.dynamicType).componentsSeparatedByString(".").last!, bundle: bundle)
-        contentView = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
+    open func load() {
+        let bundle = Bundle(for: type(of: self))
+        let nib = UINib(nibName: NSStringFromClass(type(of: self)).components(separatedBy: ".").last!, bundle: bundle)
+        contentView = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         contentView.frame = bounds
         contentView.translatesAutoresizingMaskIntoConstraints = true
-        contentView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
-        contentView.backgroundColor = UIColor.clearColor()
+        contentView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        contentView.backgroundColor = UIColor.clear
         addSubview(contentView)
     }
 }

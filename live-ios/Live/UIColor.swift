@@ -17,7 +17,7 @@ public extension UIColor {
         self.init(red: red, green: green, blue: blue, alpha: 1)
     }
     
-    public static func colorWithRGB(red red: Int, green: Int, blue: Int, alpha: Float = 1) -> UIColor {
+    public static func colorWithRGB(red: Int, green: Int, blue: Int, alpha: Float = 1) -> UIColor {
         return UIColor(
             red: CGFloat(red) / 255.0,
             green: CGFloat(green) / 255.0,

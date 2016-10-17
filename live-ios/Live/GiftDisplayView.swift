@@ -28,12 +28,12 @@ class GiftDisplayView: XibBasedView {
     }
     
     var finalCombo = 0
-    var timer: NSTimer?
+    var timer: Timer?
     
-    var lastEventTime: NSTimeInterval!
-    var maximumStaySeconds: NSTimeInterval = 5
+    var lastEventTime: TimeInterval!
+    var maximumStaySeconds: TimeInterval = 5
     
-    var needsDismiss: ((view: GiftDisplayView) -> ())!
+    var needsDismiss: ((_ view: GiftDisplayView) -> ())!
     
     override func load() {
         super.load()
@@ -42,7 +42,7 @@ class GiftDisplayView: XibBasedView {
 
     func startAnimateCombo() {
         if timer == nil {
-            timer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: #selector(GiftDisplayView.tick(_:)), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(GiftDisplayView.tick(_:)), userInfo: nil, repeats: true)
         }
     }
     
@@ -52,12 +52,12 @@ class GiftDisplayView: XibBasedView {
     }
     
     
-    func tick(timer: NSTimer) {
-        let now = NSDate().timeIntervalSince1970
+    func tick(_ timer: Timer) {
+        let now = Date().timeIntervalSince1970
         guard (now - lastEventTime) < maximumStaySeconds else {
             self.timer?.invalidate()
             self.timer = nil
-            needsDismiss(view: self)
+            needsDismiss(self)
             return
         }
         guard finalCombo > currentCombo else {
@@ -65,10 +65,10 @@ class GiftDisplayView: XibBasedView {
         }
         self.currentCombo += 1
 
-        UIView.animateWithDuration(0.1, animations: {
+        UIView.animate(withDuration: 0.1, animations: {
             self.comboLabel.scale = 3
         }, completion: { finished in
-            UIView.animateWithDuration(0.1, animations: {
+            UIView.animate(withDuration: 0.1, animations: {
                 self.comboLabel.scale = 1
             }, completion: { finished in
             

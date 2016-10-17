@@ -10,7 +10,7 @@ import UIKit
 
 extension UIFont {
     
-    static func defaultFont(size size: CGFloat) -> UIFont {
+    static func defaultFont(size: CGFloat) -> UIFont {
         return UIFont(name: UIFont.defaultFontName(), size: size)!
     }
     

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SocketIOClientSwift
+import SocketIO
 import IHKeyboardAvoiding
 
 class LiveOverlayViewController: UIViewController {
@@ -36,12 +36,12 @@ class LiveOverlayViewController: UIViewController {
 
         
         
-        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(LiveOverlayViewController.tick(_:)), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(LiveOverlayViewController.tick(_:)), userInfo: nil, repeats: true)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(LiveOverlayViewController.handleTap(_:)))
         view.addGestureRecognizer(tap)
         
-        IHKeyboardAvoiding.setAvoidingView(inputContainer)
+        IHKeyboardAvoiding.setAvoiding(inputContainer)
 
         socket.on("upvote") {[weak self] data ,ack in
             self?.emitterView.emitImage(R.image.heart()!)
@@ -60,50 +60,50 @@ class LiveOverlayViewController: UIViewController {
     }
     
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.contentInset.top = tableView.bounds.height
         tableView.reloadData()
     }
     
-    func handleTap(gesture: UITapGestureRecognizer) {
-        guard gesture.state == .Ended else {
+    func handleTap(_ gesture: UITapGestureRecognizer) {
+        guard gesture.state == .ended else {
             return
         }
         textField.resignFirstResponder()
     }
     
-    func tick(timer: NSTimer) {
+    func tick(_ timer: Timer) {
         guard comments.count > 0 else {
             return
         }
         if tableView.contentSize.height > tableView.bounds.height {
             tableView.contentInset.top = 0
         }
-        tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: comments.count - 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+        tableView.scrollToRow(at: IndexPath(row: comments.count - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
     }
 
-    @IBAction func giftButtonPressed(sender: AnyObject) {
+    @IBAction func giftButtonPressed(_ sender: AnyObject) {
         let vc = R.storyboard.main.giftChooser()!
         vc.socket = socket
         vc.room = room
-        vc.modalPresentationStyle = .Custom
-        presentViewController(vc, animated: true, completion: nil)
+        vc.modalPresentationStyle = .custom
+        present(vc, animated: true, completion: nil)
         
     }
     
     
-    @IBAction func upvoteButtonPressed(sender: AnyObject) {
+    @IBAction func upvoteButtonPressed(_ sender: AnyObject) {
         socket.emit("upvote", room.key)
     }
 }
 
 extension LiveOverlayViewController: UITextFieldDelegate {
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if string == "\n" {
             textField.resignFirstResponder()
-            if let text = textField.text where text != "" {
+            if let text = textField.text , text != "" {
                 socket.emit("comment", [
                     "roomKey": room.key,
                     "text": text
@@ -118,17 +118,17 @@ extension LiveOverlayViewController: UITextFieldDelegate {
 
 extension LiveOverlayViewController: UITableViewDataSource, UITableViewDelegate {
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return comments.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CommentCell
-        cell.comment = comments[indexPath.row]
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CommentCell
+        cell.comment = comments[(indexPath as NSIndexPath).row]
         return cell
     }
     

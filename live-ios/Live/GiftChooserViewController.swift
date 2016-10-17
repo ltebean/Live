@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SocketIOClientSwift
+import SocketIO
 
 class GiftChooserViewController: UIViewController {
     
@@ -21,14 +21,14 @@ class GiftChooserViewController: UIViewController {
 
     }
     
-    func handleTap(gesture: UITapGestureRecognizer) {
-        guard gesture.state == .Ended else {
+    func handleTap(_ gesture: UITapGestureRecognizer) {
+        guard gesture.state == .ended else {
             return
         }
-        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        presentingViewController?.dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func giftButtonPressed(sender: UIButton) {
+    @IBAction func giftButtonPressed(_ sender: UIButton) {
         
         socket.emit("gift", [
             "roomKey": room.key,
@@ -38,7 +38,7 @@ class GiftChooserViewController: UIViewController {
         ])
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 }

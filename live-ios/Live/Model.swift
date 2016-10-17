@@ -20,8 +20,8 @@ struct Room {
     
     func toDict() -> [String: AnyObject] {
         return [
-            "title": title,
-            "key": key
+            "title": title as AnyObject,
+            "key": key as AnyObject
         ]
     }
 }
@@ -59,7 +59,7 @@ class GiftEvent: NSObject {
         giftCount = dict["giftCount"] as! Int
     }
     
-    func shouldComboWith(event: GiftEvent) -> Bool {
+    func shouldComboWith(_ event: GiftEvent) -> Bool {
         return senderId == event.senderId && giftId == event.giftId
     }
     

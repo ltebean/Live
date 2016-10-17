@@ -8,7 +8,7 @@
 //
 
 import UIKit
-import SocketIOClientSwift
+import SocketIO
 import IHKeyboardAvoiding
 
 class AudienceViewController: UIViewController {
@@ -19,7 +19,7 @@ class AudienceViewController: UIViewController {
     var room: Room!
     
     var player: IJKFFMoviePlayerController!
-    let socket = SocketIOClient(socketURL: NSURL(string: Config.serverUrl)!, options: [.Log(true), .ForcePolling(true)])
+    let socket = SocketIOClient(socketURL: URL(string: Config.serverUrl)!, config: [.log(true), .forcePolling(true)])
     
     var overlayController: LiveOverlayViewController!
 
@@ -27,9 +27,9 @@ class AudienceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let urlString = Config.rtmpPlayUrl + room.key
-        player = IJKFFMoviePlayerController(contentURLString: urlString, withOptions: IJKFFOptions.optionsByDefault())  //contetURLStrint helps you making a complete stream at rooms with special characters.
+        player = IJKFFMoviePlayerController(contentURLString: urlString, with: IJKFFOptions.byDefault())  //contetURLStrint helps you making a complete stream at rooms with special characters.
         
-        player.view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        player.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         player.view.frame = previewView.bounds
         previewView.addSubview(player.view)
         
@@ -46,31 +46,31 @@ class AudienceViewController: UIViewController {
         socket.emit("join_room", room.key)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "overlay" {
-            overlayController = segue.destinationViewController as! LiveOverlayViewController
+            overlayController = segue.destination as! LiveOverlayViewController
             overlayController.socket = socket
             overlayController.room = room
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         player.play()
         socket.connect()
         
-        NSNotificationCenter.defaultCenter().addObserverForName(IJKMPMoviePlayerLoadStateDidChangeNotification, object: player, queue: NSOperationQueue.mainQueue(), usingBlock: { [weak self] notification in
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.IJKMPMoviePlayerLoadStateDidChange, object: player, queue: OperationQueue.main, using: { [weak self] notification in
             
             guard let this = self else {
                 return
             }
             let state = this.player.loadState
             switch state {
-            case IJKMPMovieLoadState.Playable:
+            case IJKMPMovieLoadState.playable:
                 this.statusLabel.text = "Playable"
-            case IJKMPMovieLoadState.PlaythroughOK:
+            case IJKMPMovieLoadState.playthroughOK:
                 this.statusLabel.text = "Playing"
-            case IJKMPMovieLoadState.Stalled:
+            case IJKMPMovieLoadState.stalled:
                 this.statusLabel.text = "Buffering"
             default:
                 this.statusLabel.text = "Playing"
@@ -79,18 +79,18 @@ class AudienceViewController: UIViewController {
 
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         player.shutdown()
         socket.disconnect()
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
-    @IBAction func closeButtonPressed(sender: AnyObject) {
-        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func closeButtonPressed(_ sender: AnyObject) {
+        presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 }

@@ -30,11 +30,11 @@ class GiftDisplayArea: UIView {
         
     }
     
-    func pushGiftEvent(event: GiftEvent) {
+    func pushGiftEvent(_ event: GiftEvent) {
         if let queuedEvent = eventQueue.filter({ $0.shouldComboWith(event)}).first {
             queuedEvent.giftCount += event.giftCount
         } else {
-            eventQueue.insert(event, atIndex: 0)
+            eventQueue.insert(event, at: 0)
         }
         handleNextEvent()
     }
@@ -46,7 +46,7 @@ class GiftDisplayArea: UIView {
 
         if let view = currentViews.filter({ $0.initialGiftEvent.shouldComboWith(event)}).first {
             view.finalCombo += event.giftCount
-            view.lastEventTime = NSDate().timeIntervalSince1970
+            view.lastEventTime = Date().timeIntervalSince1970
             return
         }
         
@@ -60,14 +60,14 @@ class GiftDisplayArea: UIView {
         let view = dequeueResuableView()
         currentViews.append(view)
         view.initialGiftEvent = event
-        view.lastEventTime = NSDate().timeIntervalSince1970
+        view.lastEventTime = Date().timeIntervalSince1970
         view.currentCombo = 1
         view.finalCombo = event.giftCount
         view.frame.origin.y = view.frame.height * CGFloat(position)
         view.tag = position
         view.transform.tx = -200
         addSubview(view)
-        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
             view.transform.tx = 0
         }, completion: { finished in
             view.startAnimateCombo()
@@ -76,8 +76,8 @@ class GiftDisplayArea: UIView {
         
     }
     
-    func dismissView(view: GiftDisplayView) {
-        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
+    func dismissView(_ view: GiftDisplayView) {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
             view.transform.ty = -20
             view.alpha = 0
         }, completion: { finished in
@@ -104,7 +104,7 @@ class GiftDisplayArea: UIView {
         }
     }
     
-    func enqueueResuableView(view: GiftDisplayView)  {
+    func enqueueResuableView(_ view: GiftDisplayView)  {
         reusableViews.append(view)
     }
     
