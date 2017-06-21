@@ -47,5 +47,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+    <key>NSCameraUsageDescription</key>
+    <string>App needs camera access to start streaming</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>App needs microphone access to start streaming</string>
 </dict>
 </plist>
