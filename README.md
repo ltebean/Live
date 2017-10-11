@@ -44,6 +44,11 @@ struct Config {
 
 The app can also run on a simulator, but to broadcast, you need to run it on a real device.
 
+### 4. Monitoring Dashboard
+
+You need to read the installation , the guidance can be found here: 
+
+* https://github.com/fiftysoft/nginx-rtmp-monitoring
 
 ## Tutorial
 
