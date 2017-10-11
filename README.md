@@ -11,6 +11,7 @@ This project is to demonstrate how to build a live broadcast app. It include the
 * RTMP server - Nginx RTMP module(https://github.com/arut/nginx-rtmp-module)
 * WebSocket server - Socket.io(http://socket.io/)
 * iOS client - LFLiveKit(https://github.com/LaiFengiOS/LFLiveKit) to push stream, IJKPlayer(https://github.com/Bilibili/ijkplayer) to play stream
+* Real time monitoring dashboard - fstv-monitoring(https://github.com/fiftysoft/nginx-rtmp-monitoring) to watch total visitors on every room , control the bandwidth , watch every stream .
 
 ## How to run
 
@@ -43,6 +44,11 @@ struct Config {
 
 The app can also run on a simulator, but to broadcast, you need to run it on a real device.
 
+### 4. Monitoring Dashboard
+
+You need to read the installation , the guidance can be found here: 
+
+* https://github.com/fiftysoft/nginx-rtmp-monitoring
 
 ## Tutorial
 
